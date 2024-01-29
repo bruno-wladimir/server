@@ -64,7 +64,14 @@ app.get('/usuarios', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
+app.get('/teste', async (req, res) => {
+  try {
+    const usuarios = await Usuario.find();
+    res.json(usuarios);
+  } catch (error) {
+    res.status(500).json({ "msg":"funciona carai"});
+  }
+});
 // Inicia o servidor
 app.listen(port, () => {
   console.log(`Servidor está rodando em http://localhost:${port}`);
