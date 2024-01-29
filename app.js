@@ -16,7 +16,10 @@ app.use(bodyParser.json());
 
 
 const uri = "mongodb+srv://brunowladimir14:kjx7AcaQxLGU_ja@cluster0.cjhf316.mongodb.net/?retryWrites=true&w=majority";
-const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
+const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true ,useNewUrlParser: true,
+useUnifiedTopology: true,
+tls: true,
+tlsAllowInvalidHostnames: true, } };
 
 
 mongoose.connect(uri, clientOptions)
