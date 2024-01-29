@@ -63,4 +63,20 @@ router.get('/get_perguntas', async (req, res) => {
             res.status(500).json({ error: 'Erro ao enviar mensagem' ,error});
         }
     });
+
+    router.get('/testerota', async (req, res) => {
+        const lojaDeCalcados='lojaDeCalcados';
+            try {
+                // await client.sendMessage("55"+ parametro2+"@c.us", parametro1);
+                console.log("entreiem tray")
+    
+        
+                res.json({"rota": "funcionaaaa"});
+        
+        
+        
+            } catch (error) {
+                res.status(500).json({ error: 'Erro ao enviar mensagem' ,error});
+            }
+        });
 module.exports = router
