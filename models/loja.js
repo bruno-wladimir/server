@@ -3,10 +3,12 @@ const  mongoose = require('mongoose');
 
 const Loja = mongoose.model('Lojas',{
     nome_loja: String,
-    telefone: String,
+    telefone_loja: String,
     cidade: String,
     categoria: String,
-    vendedores:Array
+    vendedores:Array,
+    email : String
+
 })
 
 

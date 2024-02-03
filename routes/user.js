@@ -41,7 +41,6 @@ router.post('/salvar_resposta', async (req, res) => {
 
 })
 
-
 router.get('/get_perguntas', async (req, res) => {
     console.log("estou  em perguntas")
     const lojaDeCalcados='lojaDeCalcados';
