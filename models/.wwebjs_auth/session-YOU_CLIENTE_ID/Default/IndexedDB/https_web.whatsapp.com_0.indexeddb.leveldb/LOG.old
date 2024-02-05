@@ -1,0 +1,6 @@
+2024/02/04-21:42:33.234 ec03 Reusing MANIFEST /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-YOU_CLIENTE_ID/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/02/04-21:42:33.238 ec03 Recovering log #2391
+2024/02/04-21:42:33.351 ec03 Reusing old log /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-YOU_CLIENTE_ID/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/002391.log 
+2024/02/04-21:43:57.859 11303 Level-0 table #2418: started
+2024/02/04-21:43:57.905 11303 Level-0 table #2418: 1173591 bytes OK
+2024/02/04-21:43:57.945 11303 Delete type=0 #2391

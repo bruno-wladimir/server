@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const bodyParser = require('body-parser');
 const qrcode = require('qrcode-terminal');
-const { Client, LocalAuth } = require('whatsapp-web.js');
+// const { Client, LocalAuth } = require('whatsapp-web.js');
 
 const Loja = require('../models/loja')
 const Respostas = require('../models/respostas')
@@ -10,20 +10,25 @@ const Perguntas = require('../models/perguntas');
 const Link_Mensagem = require('../models/link_mensagem');
 const Categorias = require('../models/categorias');
 const Sorteio = require('../models/sorteio');
+const  mongoose = require('mongoose');
+const { v4: uuidv4 } = require('uuid');
+const Link_validator = require('../models/Link_validator');
+const client = require('../models/whatsappClient');
 
 //INICIO ZAP 
 
-const client = new Client({
+// const client = new Client({
 
-  puppeteer: {
-    headless: true,
+//   puppeteer: {
+//     headless: true,
 
-  },
-  authStrategy: new LocalAuth({
-    clientId: "YOU_CLIENTE_ID"
-  })
-})
-client.initialize(); // remover comentario para rodar 
+//   },
+//   authStrategy: new LocalAuth({
+//     clientId: "YOU_CLIENTE_ID"
+//   })
+// })
+
+//client.initialize(); // remover comentario para rodar 
 
 
 client.on('loading_screen', (percent, message) => {
@@ -230,7 +235,7 @@ router.post('/usuarios', async (req, res) => {
 
 
 router.post('/send', async (req, res) => {// aqui manda para o zap do clinte e salva uma copia no banco de dados 
-
+console.log("te cliente : "+ req.body.telefone_cliente)
   const dadosLoja = {
     nome_cliente,
     telefone_cliente,
@@ -258,18 +263,21 @@ router.post('/send', async (req, res) => {// aqui manda para o zap do clinte e s
       cidade: cidade
       // Substitua com o valor desejado
     };
+
     const resultado = await Sorteio.findOneAndUpdate({ $and: [condição] },
        { $push: { participantes: novo_participante } },{ new: true })
 
        
-    console.log("resulr"+ resultado);
+    //console.log("resulr"+ resultado);
 
 
-    res.status(200).json({ message: "Cadastrado com sucesso na promoção " });
 
     //await Sorteio.create(dadosLoja)
-    sendzapfunction(telefone_cliente); //aqui manda a mensagem para o clinte
+    const link  = await  gerar_link(email,telefone_cliente);
 
+    await sendzapfunction(req.body.telefone_cliente,link); //aqui manda a mensagem para o clinte
+
+    res.status(200).json({ message: "Cadastrado com sucesso na promoção " });
 
   }
 
@@ -280,6 +288,80 @@ router.post('/send', async (req, res) => {// aqui manda para o zap do clinte e s
   }
 
 })
+
+
+async function gerar_link (email,telefone_cliente){
+
+  const linkKey = uuidv4();
+
+  // await LinkModel.create({ key: linkKey, used: false });
+  const links = { 
+    key: linkKey,
+    used: false,
+  tel_cliente: telefone_cliente,
+    loja:email
+  }
+
+  await Link_validator.create(links)
+
+  const link2 = "http://localhost:5173/user-inicio/"+linkKey
+  return link2;
+}
+
+
+
+router.get('/gerar-link', async (req, res) => {
+  const linkKey = uuidv4();
+ // const link = `http://localhost:5173/user-inicio/${linkKey}`;
+
+
+ // await LinkModel.create({ key: linkKey, used: false });
+ const links = { 
+   key: linkKey,
+   used: false
+
+ }
+try{
+  await Link_validator.create(links)
+
+
+  res.json({ linkKey });
+}
+catch{
+  res.json({ "erro":"erro al criar link" });
+
+}
+
+
+
+
+});
+
+
+router.get('/validarlink', async (req, res) => {
+  // const linkKey = "http://localhost:5173/user-inicio/"+ req.query.url;
+  const linkKey  = req.query.url
+
+  console.log("acessando link "+ linkKey)
+
+  const link = await Link_validator.findOne({ key: linkKey, used: false });
+
+  if (link) {
+    // Faça o que for necessário quando o link é acessado pela primeira vez
+    console.log("link acessado ")
+
+    res.send({st:"link ok"});
+
+    // Depois de acessado, marque como inválido
+
+  } else {
+    console.log("link ja usado ")
+    res.status(403).send({st:"link ja usado "});
+  }
+});
+
+
+
 
 router.post('/createpromotion', async (req, res) => {// aqui manda para o zap do clinte e salva uma copia no banco de dados 
   console.log(req.body)
@@ -463,15 +545,19 @@ router.post('/salvar_perguntas', async (req, res) => {
 
 
 })
-async function sendzapfunction(numero) {
+async function sendzapfunction(numero,link) {
+ console.log("recebendo numero para nenvio"+ numero)
+ try {
+ const  _phoneId = await client.getNumberId("55"+ numero)
+// //console.log("enviando para "+ _phoneId._serialized)
+const serialize = _phoneId._serialized;
+console.log("numero preparado"+ serialize)
 
-  var _phoneId = await client.getNumberId("55"+numero)
 
-
-  try {
-    if (_phoneId) {
-  
-      await client.sendMessage(_phoneId._serialized, "Você esta particpando");
+// const serialized = _phoneId._serialized
+ 
+    if (serialize) {
+      await client.sendMessage(serialize, `${link}`);
 
     console.log("Mensagem enviada");
 
