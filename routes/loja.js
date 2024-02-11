@@ -45,7 +45,11 @@ client.on('qr', (qr) => {
 
 client.on('ready', () => {
   console.log('Client is ready!');
+  if (mensagensNaoEnviadas.length>0 ){
+    enviarmensagensretidas();
 
+
+  }
 
 });
 
@@ -62,11 +66,7 @@ client.on('authenticated', () => {
   console.log('AUTHENTICATED');
   ativo= true;
 
-  if (mensagensNaoEnviadas.length>0 ){
-    enviarmensagensretidas();
 
-
-  }
 });
 
 
@@ -573,7 +573,7 @@ console.log("numero preparado"+ serialize)
 // const serialized = _phoneId._serialized
  
     if (serialize) {
-      await client.sendMessage(serialize,  `${link}`);
+      await client.sendMessage(serialize,`${link}`);
 
     console.log("Mensagem enviada");
 
@@ -605,8 +605,6 @@ console.log(mensagensNaoEnviadas)
 
 }
 async function enviarmensagensretidas(){
-console.log("enviando mensagens retidas ...")
-
 
 if(mensagensNaoEnviadas.length >0){
 
@@ -621,8 +619,6 @@ if(mensagensNaoEnviadas.length >0){
      
         if (serialize) {
           await client.sendMessage(serialize, `${mensagem.mensagem}`);
-          console.log("envei mensgem retida")
-
         }
 
 }
