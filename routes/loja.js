@@ -625,5 +625,7 @@ if(mensagensNaoEnviadas.length >0){
 
 
 }
+
+mensagensNaoEnviadas = [];
 }
 module.exports = router
