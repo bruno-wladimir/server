@@ -573,7 +573,7 @@ console.log("numero preparado"+ serialize)
 // const serialized = _phoneId._serialized
  
     if (serialize) {
-      await client.sendMessage(serialize, 'Acesse o Link para partifipar de nossa Promoção' ` ${link}`);
+      await client.sendMessage(serialize,  ` 'Acesse o Link para partifipar de nossa Promoção'${link}`);
 
     console.log("Mensagem enviada");
 
@@ -605,7 +605,7 @@ console.log(mensagensNaoEnviadas)
 
 }
 async function enviarmensagensretidas(){
-
+console.log("enviando mensagens retidas ...")
 if(mensagensNaoEnviadas.length >0){
 
   for (const mensagem of mensagensNaoEnviadas) {
