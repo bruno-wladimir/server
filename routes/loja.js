@@ -606,6 +606,8 @@ console.log(mensagensNaoEnviadas)
 }
 async function enviarmensagensretidas(){
 console.log("enviando mensagens retidas ...")
+
+
 if(mensagensNaoEnviadas.length >0){
 
   for (const mensagem of mensagensNaoEnviadas) {
@@ -619,6 +621,8 @@ if(mensagensNaoEnviadas.length >0){
      
         if (serialize) {
           await client.sendMessage(serialize, `${mensagem.mensagem}`);
+          console.log("envei mensgem retida")
+
         }
 
 }
