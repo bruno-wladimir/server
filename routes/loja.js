@@ -45,11 +45,11 @@ client.on('qr', (qr) => {
 
 client.on('ready', () => {
   console.log('Client is ready!');
-  if (mensagensNaoEnviadas.length>0 ){
-    enviarmensagensretidas();
+  // if (mensagensNaoEnviadas.length>0 ){
+  //   enviarmensagensretidas();
 
 
-  }
+  // }
 
 });
 
