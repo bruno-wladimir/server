@@ -312,7 +312,7 @@ async function gerar_link (email,telefone_cliente){
 
   await Link_validator.create(links)
  
-  const link2 = "willowy-eclair-7514f9.netlify.app/user-inicio/"+linkKey
+  const link2 = "https://willowy-eclair-7514f9.netlify.app/user-inicio/"+linkKey
   return link2;
 }
 
