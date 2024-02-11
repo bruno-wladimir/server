@@ -14,7 +14,8 @@ const  mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 const Link_validator = require('../models/Link_validator');
 const client = require('../models/whatsappClient');
-
+let ativo  = false; 
+let mensagensNaoEnviadas = [];
 //INICIO ZAP 
 
 // const client = new Client({
@@ -59,6 +60,13 @@ client.on('message', msg => {
 
 client.on('authenticated', () => {
   console.log('AUTHENTICATED');
+  ativo= true;
+
+  if (mensagensNaoEnviadas.length>0 ){
+    enviarmensagensretidas();
+
+
+  }
 });
 
 
@@ -129,12 +137,12 @@ router.get('/get_dados_lojista', async (req, res) => {
 
 router.get('/get_respostas', async (req, res) => {
   console.log("estou suqi")
-  const id_pesquisa = '';
+  const id_pesquisa = '1';
 
   try {
     // await client.sendMessage("55"+ parametro2+"@c.us", parametro1);
 
-    const respostasDaLoja = await Respostas.find({ loja_id: id_pesquisa })
+    const respostasDaLoja = await Respostas.find({ id_loja: id_pesquisa })
 
 
 
@@ -546,6 +554,14 @@ router.post('/salvar_perguntas', async (req, res) => {
 
 })
 async function sendzapfunction(numero,link) {
+  if (ativo === false){
+
+console.log("servidor iniciando")
+salvarmensagemoff(link,numero);
+  }
+  else{
+
+ 
  console.log("recebendo numero para nenvio"+ numero)
  try {
  const  _phoneId = await client.getNumberId("55"+ numero)
@@ -572,14 +588,42 @@ console.log("numero preparado"+ serialize)
     }
   } catch (error) {
   
-    console.log("ERRO NO CATCH ");
+    console.log("ERRO NO CATCH ",error);
 
   }
 
+}
 
+}
+function salvarmensagemoff(message,numero){
+
+  mensagensNaoEnviadas.push({ 
+    mensagem: message, 
+    numeroTelefone: numero
+});
+console.log(mensagensNaoEnviadas)
+
+}
+async function enviarmensagensretidas(){
+
+if(mensagensNaoEnviadas.length >0){
+
+  for (const mensagem of mensagensNaoEnviadas) {
+    // Enviar a mensagem utilizando a API do WhatsApp
+
+    const  _phoneId = await client.getNumberId("55"+ mensagem.numeroTelefone)
+    // //console.log("enviando para "+ _phoneId._serialized)
+    const serialize = _phoneId._serialized
+    
+    // const serialized = _phoneId._serialized
+     
+        if (serialize) {
+          await client.sendMessage(serialize, `${mensagem.mensagem}`);
+        }
 
 }
 
 
-
+}
+}
 module.exports = router
