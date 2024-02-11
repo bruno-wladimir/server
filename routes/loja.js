@@ -554,12 +554,12 @@ router.post('/salvar_perguntas', async (req, res) => {
 
 })
 async function sendzapfunction(numero,link) {
-  if (ativo === false){
+//   if (ativo === false){
 
-console.log("servidor iniciando")
-salvarmensagemoff(link,numero);
-  }
-  else{
+// console.log("servidor iniciando")
+// salvarmensagemoff(link,numero);
+//   }
+  
 
  
  console.log("recebendo numero para nenvio"+ numero)
@@ -594,7 +594,7 @@ console.log("numero preparado"+ serialize)
 
 }
 
-}
+
 function salvarmensagemoff(message,numero){
 
   mensagensNaoEnviadas.push({ 
