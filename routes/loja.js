@@ -309,7 +309,7 @@ console.log("te cliente : "+ req.body.telefone_cliente)
 
 
     //await Sorteio.create(dadosLoja)
-    const link  = await  gerar_link(email,telefone_cliente);
+    //const link  = await  gerar_link(email,telefone_cliente);
 
     //await sendzapfunction(req.body.telefone_cliente,link); //aqui manda a mensagem para o clinte
     await client.sendMessage("553199631088@c.us", "Ola ");
