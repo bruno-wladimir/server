@@ -1,3 +1,3 @@
-2024/02/12-07:19:48.110 9403 Reusing MANIFEST /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/Local Storage/leveldb/MANIFEST-000001
-2024/02/12-07:19:48.139 9403 Recovering log #4
-2024/02/12-07:19:48.152 9403 Reusing old log /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/Local Storage/leveldb/000004.log 
+2024/02/12-12:12:27.432 11703 Reusing MANIFEST /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/Local Storage/leveldb/MANIFEST-000001
+2024/02/12-12:12:27.434 11703 Recovering log #4
+2024/02/12-12:12:27.435 11703 Reusing old log /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/Local Storage/leveldb/000004.log 
