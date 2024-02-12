@@ -1,0 +1,120 @@
+2024/02/12-07:19:50.488 aa03 Reusing MANIFEST /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/02/12-07:19:50.497 aa03 Recovering log #894
+2024/02/12-07:19:50.688 aa03 Reusing old log /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000894.log 
+2024/02/12-07:20:02.082 aa03 Level-0 table #906: started
+2024/02/12-07:20:02.161 aa03 Level-0 table #906: 1051618 bytes OK
+2024/02/12-07:20:02.198 aa03 Delete type=0 #894
+2024/02/12-07:20:02.200 aa03 Manual compaction at level-0 from '\x00;\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00<\x00\x00\x00' @ 0 : 0; will stop at '\x00;\x00\x00\x05' @ 2828883 : 1
+2024/02/12-07:20:02.200 aa03 Compacting 1@0 + 0@1 files
+2024/02/12-07:20:02.299 aa03 Generated table #907@0: 22729 keys, 395000 bytes
+2024/02/12-07:20:02.321 aa03 Generated table #908@0: 3708 keys, 144930 bytes
+2024/02/12-07:20:02.321 aa03 Compacted 1@0 + 0@1 files => 539930 bytes
+2024/02/12-07:20:02.357 aa03 compacted to: files[ 0 2 31 0 0 0 0 ]
+2024/02/12-07:20:02.365 aa03 Delete type=2 #906
+2024/02/12-07:20:02.368 ee07 Manual compaction at level-0 from '\x00;\x00\x00\x05' @ 2828883 : 1 .. '\x00<\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/02/12-07:20:05.933 9403 Compacting 1@1 + 5@2 files
+2024/02/12-07:20:06.130 9403 Generated table #909@1: 69790 keys, 2263816 bytes
+2024/02/12-07:20:06.237 9403 Generated table #910@1: 13007 keys, 2199873 bytes
+2024/02/12-07:20:06.451 9403 Generated table #911@1: 70541 keys, 2211788 bytes
+2024/02/12-07:20:06.625 9403 Generated table #912@1: 96422 keys, 2247611 bytes
+2024/02/12-07:20:06.721 9403 Generated table #913@1: 58054 keys, 1356774 bytes
+2024/02/12-07:20:06.721 9403 Compacted 1@1 + 5@2 files => 10279862 bytes
+2024/02/12-07:20:06.753 9403 compacted to: files[ 0 1 31 0 0 0 0 ]
+2024/02/12-07:20:06.754 9403 Delete type=2 #908
+2024/02/12-07:20:06.754 9403 Delete type=2 #886
+2024/02/12-07:20:06.755 9403 Delete type=2 #902
+2024/02/12-07:20:06.755 9403 Delete type=2 #903
+2024/02/12-07:20:06.755 9403 Delete type=2 #901
+2024/02/12-07:20:06.755 9403 Delete type=2 #900
+2024/02/12-07:20:06.975 ee07 Compacting 1@1 + 3@2 files
+2024/02/12-07:20:07.280 ee07 Generated table #914@1: 90449 keys, 2241689 bytes
+2024/02/12-07:20:07.883 ee07 Generated table #915@1: 40395 keys, 2213917 bytes
+2024/02/12-07:20:07.932 ee07 Generated table #916@1: 2631 keys, 197144 bytes
+2024/02/12-07:20:07.933 ee07 Compacted 1@1 + 3@2 files => 4652750 bytes
+2024/02/12-07:20:07.966 ee07 compacted to: files[ 0 0 31 0 0 0 0 ]
+2024/02/12-07:20:07.969 ee07 Delete type=2 #892
+2024/02/12-07:20:07.969 ee07 Delete type=2 #898
+2024/02/12-07:20:07.969 ee07 Delete type=2 #907
+2024/02/12-07:20:07.969 ee07 Delete type=2 #899
+2024/02/12-07:20:39.564 ef03 Level-0 table #918: started
+2024/02/12-07:20:39.628 ef03 Level-0 table #918: 1135058 bytes OK
+2024/02/12-07:20:39.661 ef03 Delete type=0 #905
+2024/02/12-07:20:39.708 ef03 Compacting 1@0 + 0@1 files
+2024/02/12-07:20:39.835 ef03 Generated table #919@0: 26909 keys, 457918 bytes
+2024/02/12-07:20:39.864 ef03 Generated table #920@0: 4310 keys, 116556 bytes
+2024/02/12-07:20:39.865 ef03 Compacted 1@0 + 0@1 files => 574474 bytes
+2024/02/12-07:20:39.901 ef03 compacted to: files[ 0 2 31 0 0 0 0 ]
+2024/02/12-07:20:39.969 ef03 Compacting 1@1 + 3@2 files
+2024/02/12-07:20:40.176 ef03 Generated table #921@1: 89931 keys, 2239989 bytes
+2024/02/12-07:20:40.510 ef03 Generated table #922@1: 44988 keys, 2219635 bytes
+2024/02/12-07:20:40.558 ef03 Generated table #923@1: 3299 keys, 308677 bytes
+2024/02/12-07:20:40.558 ef03 Compacted 1@1 + 3@2 files => 4768301 bytes
+2024/02/12-07:20:40.613 ef03 compacted to: files[ 0 1 31 0 0 0 0 ]
+2024/02/12-07:20:40.619 ef03 Delete type=2 #919
+2024/02/12-07:20:40.619 ef03 Delete type=2 #918
+2024/02/12-07:20:40.620 ef03 Delete type=2 #916
+2024/02/12-07:20:40.620 ef03 Delete type=2 #915
+2024/02/12-07:20:40.620 ef03 Delete type=2 #914
+2024/02/12-07:20:40.628 11703 Compacting 1@1 + 9@2 files
+2024/02/12-07:20:40.819 11703 Generated table #924@1: 29316 keys, 2192293 bytes
+2024/02/12-07:20:41.340 11703 Generated table #925@1: 30223 keys, 2267976 bytes
+2024/02/12-07:20:41.795 11703 Generated table #926@1: 28229 keys, 2270060 bytes
+2024/02/12-07:20:42.059 11703 Generated table #927@1: 31047 keys, 2258317 bytes
+2024/02/12-07:20:42.310 11703 Generated table #928@1: 69652 keys, 2263216 bytes
+2024/02/12-07:20:42.442 11703 Generated table #929@1: 12999 keys, 2199967 bytes
+2024/02/12-07:20:42.602 11703 Generated table #930@1: 69544 keys, 2210969 bytes
+2024/02/12-07:20:42.825 11703 Generated table #931@1: 96404 keys, 2245496 bytes
+2024/02/12-07:20:42.932 11703 Generated table #932@1: 63112 keys, 1470586 bytes
+2024/02/12-07:20:42.932 11703 Compacted 1@1 + 9@2 files => 19378880 bytes
+2024/02/12-07:20:42.967 11703 compacted to: files[ 0 0 31 0 0 0 0 ]
+2024/02/12-07:20:42.970 11703 Delete type=2 #920
+2024/02/12-07:20:42.970 11703 Delete type=2 #909
+2024/02/12-07:20:42.970 11703 Delete type=2 #767
+2024/02/12-07:20:42.971 11703 Delete type=2 #766
+2024/02/12-07:20:42.971 11703 Delete type=2 #768
+2024/02/12-07:20:42.971 11703 Delete type=2 #769
+2024/02/12-07:20:42.971 11703 Delete type=2 #910
+2024/02/12-07:20:42.971 11703 Delete type=2 #911
+2024/02/12-07:20:42.971 11703 Delete type=2 #913
+2024/02/12-07:20:42.971 11703 Delete type=2 #912
+2024/02/12-07:20:47.203 f203 Level-0 table #934: started
+2024/02/12-07:20:47.253 f203 Level-0 table #934: 1121813 bytes OK
+2024/02/12-07:20:47.289 f203 Delete type=0 #917
+2024/02/12-07:20:47.295 f203 Compacting 1@0 + 0@1 files
+2024/02/12-07:20:47.402 f203 Generated table #935@0: 28727 keys, 531299 bytes
+2024/02/12-07:20:47.420 f203 Generated table #936@0: 2609 keys, 71451 bytes
+2024/02/12-07:20:47.420 f203 Compacted 1@0 + 0@1 files => 602750 bytes
+2024/02/12-07:20:47.454 f203 compacted to: files[ 0 2 31 0 0 0 0 ]
+2024/02/12-07:20:47.938 11703 Compacting 1@1 + 4@2 files
+2024/02/12-07:20:48.125 11703 Generated table #937@1: 12999 keys, 2199967 bytes
+2024/02/12-07:20:48.288 11703 Generated table #938@1: 68775 keys, 2208370 bytes
+2024/02/12-07:20:48.478 11703 Generated table #939@1: 96679 keys, 2248054 bytes
+2024/02/12-07:20:48.593 11703 Generated table #940@1: 66213 keys, 1540867 bytes
+2024/02/12-07:20:48.593 11703 Compacted 1@1 + 4@2 files => 8197258 bytes
+2024/02/12-07:20:48.628 11703 compacted to: files[ 0 1 31 0 0 0 0 ]
+2024/02/12-07:20:48.629 11703 Delete type=2 #936
+2024/02/12-07:20:48.629 11703 Delete type=2 #934
+2024/02/12-07:20:48.629 11703 Delete type=2 #931
+2024/02/12-07:20:48.630 11703 Delete type=2 #930
+2024/02/12-07:20:48.630 11703 Delete type=2 #932
+2024/02/12-07:20:48.630 11703 Delete type=2 #929
+2024/02/12-07:20:48.635 11703 Compacting 1@1 + 2@2 files
+2024/02/12-07:20:48.800 11703 Generated table #941@1: 89329 keys, 2240970 bytes
+2024/02/12-07:20:48.929 11703 Generated table #942@1: 48946 keys, 2222589 bytes
+2024/02/12-07:20:48.955 11703 Generated table #943@1: 3777 keys, 170204 bytes
+2024/02/12-07:20:48.955 11703 Compacted 1@1 + 2@2 files => 4633763 bytes
+2024/02/12-07:20:49.004 11703 compacted to: files[ 0 0 32 0 0 0 0 ]
+2024/02/12-07:20:49.006 11703 Delete type=2 #922
+2024/02/12-07:20:49.006 11703 Delete type=2 #935
+2024/02/12-07:20:49.006 11703 Delete type=2 #921
+2024/02/12-07:20:52.960 11703 Level-0 table #945: started
+2024/02/12-07:20:53.029 11703 Level-0 table #945: 1105086 bytes OK
+2024/02/12-07:20:53.062 11703 Delete type=0 #933
+2024/02/12-07:20:53.083 ef03 Compacting 1@0 + 0@1 files
+2024/02/12-07:20:53.167 ef03 Generated table #946@0: 29812 keys, 546749 bytes
+2024/02/12-07:20:53.185 ef03 Generated table #947@0: 2678 keys, 64914 bytes
+2024/02/12-07:20:53.186 ef03 Compacted 1@0 + 0@1 files => 611663 bytes
+2024/02/12-07:20:53.228 ef03 compacted to: files[ 0 2 32 0 0 0 0 ]
+2024/02/12-07:20:53.230 ef03 Delete type=2 #945
+2024/02/12-07:20:53.780 11703 Compacting 1@1 + 2@2 files
+2024/02/12-07:20:54.034 11703 Generated table #948@1: 89134 keys, 2240745 bytes

@@ -19,6 +19,10 @@ const fs = require('fs');
 let qrread = "";
 let ativo  = false; 
 let mensagensNaoEnviadas = [];
+//qrcode.generate(qrd, { small: true });
+
+
+
 //INICIO ZAP 
 
 // const client = new Client({
@@ -43,14 +47,14 @@ client.on('qr', (qr) => {
   console.log('QR RECEIVED', qr);
   qrcode.generate(qr, { small: true });
 
-  const qrCodePath = './qr-code.png';
-  qrcode.toFile(qrCodePath, qr, { small: true }, (err) => {
-    if (err) {
-      console.error('Erro ao salvar o QR code:', err);
-      return;
-    }
-    console.log('QR code salvo em:', qrCodePath);
-  });
+  // const qrCodePath = './qr-code.png';
+  // qrcode.toFile(qrCodePath, qr, { small: true }, (err) => {
+  //   if (err) {
+  //     console.error('Erro ao salvar o QR code:', err);
+  //     return;
+  //   }
+  //   console.log('QR code salvo em:', qrCodePath);
+  // });
 
 });
 
@@ -284,6 +288,7 @@ console.log("te cliente : "+ req.body.telefone_cliente)
   try {
 
     const primeiroDocumento = await Loja.findOne({ email: email });
+    console.log(" DB BUSCAR LOJA ",primeiroDocumento)
 
 
     const cidade = primeiroDocumento.cidade;
@@ -297,7 +302,8 @@ console.log("te cliente : "+ req.body.telefone_cliente)
     const resultado = await Sorteio.findOneAndUpdate({ $and: [condição] },
        { $push: { participantes: novo_participante } },{ new: true })
 
-       
+       console.log(" DB BUSCAR SORTEIO "+ resultado)
+
     //console.log("resulr"+ resultado);
 
 
@@ -321,6 +327,7 @@ console.log("te cliente : "+ req.body.telefone_cliente)
 
 
 async function gerar_link (email,telefone_cliente){
+  console.log(" GERAR LINK ")
 
   const linkKey = uuidv4();
 
@@ -584,7 +591,7 @@ salvarmensagemoff(link,numero);
   
 
  else{
- console.log("recebendo numero para nenvio"+ numero)
+ console.log(" send zap function "+ numero)
  try {
  const  _phoneId = await client.getNumberId("55"+ numero)
 // //console.log("enviando para "+ _phoneId._serialized)
