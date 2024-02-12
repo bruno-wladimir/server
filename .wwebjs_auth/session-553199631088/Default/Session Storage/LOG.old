@@ -1,2 +1,3 @@
-2024/02/11-23:01:56.190 6603 Creating DB /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/Session Storage since it was missing.
-2024/02/11-23:01:56.241 6603 Reusing MANIFEST /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/Session Storage/MANIFEST-000001
+2024/02/11-23:02:45.480 10103 Reusing MANIFEST /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/Session Storage/MANIFEST-000001
+2024/02/11-23:02:45.490 10103 Recovering log #3
+2024/02/11-23:02:45.492 10103 Reusing old log /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/Session Storage/000003.log 
