@@ -11,6 +11,9 @@ const client = new Client({
   })
 });
 
+
+
+
 // Inicialize o cliente
 client.initialize();
 

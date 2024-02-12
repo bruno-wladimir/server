@@ -14,6 +14,9 @@ const  mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 const Link_validator = require('../models/Link_validator');
 const client = require('../models/whatsappClient');
+const fs = require('fs');
+
+let qrread = "";
 let ativo  = false; 
 let mensagensNaoEnviadas = [];
 //INICIO ZAP 
@@ -40,6 +43,14 @@ client.on('qr', (qr) => {
   console.log('QR RECEIVED', qr);
   qrcode.generate(qr, { small: true });
 
+  const qrCodePath = './qr-code.png';
+  qrcode.toFile(qrCodePath, qr, { small: true }, (err) => {
+    if (err) {
+      console.error('Erro ao salvar o QR code:', err);
+      return;
+    }
+    console.log('QR code salvo em:', qrCodePath);
+  });
 
 });
 
@@ -71,7 +82,12 @@ client.on('authenticated', () => {
 
 
 // FIM MODULO ZAP
-
+router.get('/qr', async (req, res) => {
+  let qr = await new Promise((resolve, reject) => {
+      client.once('qr', (qr) => resolve(qr))
+  })
+  res.send(qr)
+})
 
 router.get('/testnumber', async (req, res) => {
   console.log("test number")
@@ -93,7 +109,13 @@ router.get('/testnumber', async (req, res) => {
   }
 
 });
+router.get('/getqr', async (req, res) => {
 
+
+ res.status(200).json(qrcode.generate(qrread, { small: true }));
+
+
+})
 
 router.get('/get_dados_lojista', async (req, res) => {
   const param1 = req.query.email;
