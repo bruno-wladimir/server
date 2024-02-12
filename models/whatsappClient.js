@@ -7,7 +7,7 @@ const client = new Client({
     headless: true,
   },
   authStrategy: new LocalAuth({
-    clientId: "YOUR_CLIENT_ID"
+    clientId: "553199631088"
   })
 });
 
