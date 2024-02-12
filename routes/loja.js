@@ -590,10 +590,12 @@ async function sendzapfunction(numero,link) {
 //   }
   
 
- console.log(" send zap function "+ numero)
+ console.log(" send zap function ")
  try {
  const  _phoneId = await client.getNumberId("55"+ numero)
-// //console.log("enviando para "+ _phoneId._serialized)
+console.log("enviando para "+ _phoneId)
+
+
 const serialize = _phoneId._serialized;
 console.log("numero preparado"+ serialize)
 
