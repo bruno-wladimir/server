@@ -309,10 +309,9 @@ console.log("te cliente : "+ req.body.telefone_cliente)
 
 
     //await Sorteio.create(dadosLoja)
-    //const link  = await  gerar_link(email,telefone_cliente);
+    const link  = await  gerar_link(email,telefone_cliente);
 
-    //await sendzapfunction(req.body.telefone_cliente,link); //aqui manda a mensagem para o clinte
-    await client.sendMessage("553199631088@c.us", "Ola ");
+    await sendzapfunction(req.body.telefone_cliente,link); //aqui manda a mensagem para o clinte
     res.status(200).json({ message: "Cadastrado com sucesso na promoção " });
 
   }
@@ -598,9 +597,6 @@ console.log("enviando para "+ _phoneId)
 
 const serialize = _phoneId._serialized;
 console.log("numero preparado"+ serialize)
-
-
-// const serialized = _phoneId._serialized
  
     if (serialize) {
       await client.sendMessage(serialize,`${link}`);
