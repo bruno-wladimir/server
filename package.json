@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "build:digitalocean": "npm install --production=false && npm run build && npm ci",
-
+    "build": "npm install",
     "test": "nodemon app.js"
   },
   "author": "",
