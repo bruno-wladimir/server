@@ -1,2 +1,3 @@
-2024/02/12-12:35:27.740 6903 Creating DB /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/Local Storage/leveldb since it was missing.
-2024/02/12-12:35:27.808 6903 Reusing MANIFEST /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/Local Storage/leveldb/MANIFEST-000001
+2024/02/12-13:01:58.539 8e03 Reusing MANIFEST /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/Local Storage/leveldb/MANIFEST-000001
+2024/02/12-13:01:58.541 8e03 Recovering log #3
+2024/02/12-13:01:58.543 8e03 Reusing old log /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-553199631088/Default/Local Storage/leveldb/000003.log 
