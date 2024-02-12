@@ -1,6 +1,0 @@
-2024/02/11-22:45:54.256 15403 Reusing MANIFEST /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-YOUR_CLIENT_ID/Default/Local Storage/leveldb/MANIFEST-000001
-2024/02/11-22:45:54.265 15403 Recovering log #4
-2024/02/11-22:45:54.268 15403 Reusing old log /Users/brunowladimir/Downloads/server/.wwebjs_auth/session-YOUR_CLIENT_ID/Default/Local Storage/leveldb/000004.log 
-2024/02/11-22:53:56.108 2323 Level-0 table #8: started
-2024/02/11-22:53:56.118 2323 Level-0 table #8: 25489 bytes OK
-2024/02/11-22:53:56.154 2323 Delete type=0 #4
