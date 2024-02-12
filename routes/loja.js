@@ -583,14 +583,13 @@ router.post('/salvar_perguntas', async (req, res) => {
 
 })
 async function sendzapfunction(numero,link) {
-  if (ativo === false){
+//   if (ativo === false){
 
-console.log("servidor iniciando")
-salvarmensagemoff(link,numero);
-  }
+// console.log("servidor iniciando")
+// salvarmensagemoff(link,numero);
+//   }
   
 
- else{
  console.log(" send zap function "+ numero)
  try {
  const  _phoneId = await client.getNumberId("55"+ numero)
@@ -620,7 +619,7 @@ console.log("numero preparado"+ serialize)
     console.log("ERRO NO CATCH ",error);
 
   }
- }
+ 
 }
 
 
