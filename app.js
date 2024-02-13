@@ -45,7 +45,7 @@ app.use('/loja',loja_router)
 app.use('/user',user_router)
 
 
-app.post('/test', async (req, res) => {
+app.get('/test', async (req, res) => {
 
  
 
