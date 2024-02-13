@@ -50,7 +50,6 @@ app.get('/test', async (req, res) => {
  
 
   try {
-    const novoUsuario = await usuario.save();
     res.status(201).json("servidor on");
   } catch (error) {
     res.status(400).json({ error: error.message });
