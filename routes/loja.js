@@ -60,11 +60,12 @@ client.on('qr', (qr) => {
 
 client.on('ready', () => {
   console.log('Client is ready!');
-  // if (mensagensNaoEnviadas.length>0 ){
-  //   enviarmensagensretidas();
+  
+  if (mensagensNaoEnviadas.length>0 ){
+    enviarmensagensretidas();
 
 
-  // }
+  }
 
 });
 
@@ -581,11 +582,11 @@ router.post('/salvar_perguntas', async (req, res) => {
 
 })
 async function sendzapfunction(numero,link) {
-//   if (ativo === false){
+  if (ativo === false){
 
-// console.log("servidor iniciando")
-// salvarmensagemoff(link,numero);
-//   }
+console.log("servidor iniciando")
+salvarmensagemoff(link,numero);
+  }
   
 
  console.log(" send zap function ")
