@@ -267,7 +267,6 @@ router.post('/usuarios', async (req, res) => {
 }
 )
 
-
 router.post('/send', async (req, res) => {// aqui manda para o zap do clinte e salva uma copia no banco de dados 
 console.log("te cliente : "+ req.body.telefone_cliente)
   const dadosLoja = {
