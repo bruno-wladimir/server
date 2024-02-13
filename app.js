@@ -45,14 +45,13 @@ app.use('/loja',loja_router)
 app.use('/user',user_router)
 
 
-app.post('/usuarios', async (req, res) => {
+app.post('/test', async (req, res) => {
 
-  const { nome, email } = req.body;
-  const usuario = new Usuario({ nome, email });
+ 
 
   try {
     const novoUsuario = await usuario.save();
-    res.status(201).json(novoUsuario);
+    res.status(201).json("servidor on");
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
