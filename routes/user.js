@@ -192,6 +192,7 @@ router.get('/get_perguntas', async (req, res) => {
     }
 });
 
+
 router.get('/testerota', async (req, res) => {
     const lojaDeCalcados = 'lojaDeCalcados';
     try {
