@@ -60,7 +60,7 @@ client.on('qr', (qr) => {
 
 client.on('ready', () => {
   console.log('Client is ready!');
-  
+
   if (mensagensNaoEnviadas.length>0 ){
     enviarmensagensretidas();
 
@@ -340,7 +340,7 @@ async function gerar_link (email,telefone_cliente){
 
   await Link_validator.create(links)
  
-  const link2 = "https://willowy-eclair-7514f9.netlify.app/user-inicio/"+linkKey
+  const link2 = "https://app.megabolha.com.br/user-inicio/"+linkKey
   return link2;
 }
 
