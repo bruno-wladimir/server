@@ -612,7 +612,7 @@ console.log("numero preparado"+ serialize)
     } else { // aqui eu posso salvar em um arquivo e mandar para loja por exemplo . 
 
       //Handle invalid number
-      console.log("Mensagem nao enviada - numero incorreto ");
+      console.log("Mensagem nao enviada - numero incorreto!! ");
 
     }
   } catch (error) {
