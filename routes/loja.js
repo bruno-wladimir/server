@@ -603,9 +603,8 @@ console.log("numero preparado"+ serialize)
       const mensagemComLink = `Você esta recebendo essa menegsam pois comprou em nosso loja! \nresponda para concorrer a prêmios:\n ${link}`;
 
 
-      await client.sendMessage(serialize,`${link}`);
+      await client.sendMessage(serialize, mensagemComLink);
 
-    const mensagemComLink = `Você esta recebendo essa menegsam pois comprou em nosso loja! \nresponda para concorrer a prêmios:\n ${link}`;
 
         const media = await  MessageMedia.fromUrl('https://m.media-amazon.com/images/I/81naSwftdZL._AC_UF894,1000_QL80_.jpg');
 
