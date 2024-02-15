@@ -617,6 +617,7 @@ console.log("numero preparado"+ serialize)
     }
   } catch (error) {
   
+    
     console.log("ERRO NO CATCH ",error);
 
   }
