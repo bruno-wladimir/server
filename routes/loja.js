@@ -600,6 +600,7 @@ console.log("numero preparado"+ serialize)
  
     if (serialize) {
 
+      const mensagemComLink = `Você esta recebendo essa menegsam pois comprou em nosso loja! \nresponda para concorrer a prêmios:\n ${link}`;
 
 
       await client.sendMessage(serialize,`${link}`);
@@ -617,7 +618,7 @@ console.log("numero preparado"+ serialize)
     }
   } catch (error) {
   
-    
+
     console.log("ERRO NO CATCH ",error);
 
   }
