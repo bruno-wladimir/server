@@ -600,17 +600,17 @@ console.log("numero preparado"+ serialize)
  
     if (serialize) {
 
-    //   const imageBuffer = fs.readFileSync('/Users/brunowladimir/Downloads/server/images/panela.png');
+      const imageBuffer = fs.readFileSync('images/panela.png');
 
-    //  await client.sendMessage(serialize, imageBuffer, {
-    //     caption: 'Legenda opcional para a imagem'
+     await client.sendMessage(serialize, imageBuffer, {
+        caption: 'Legenda opcional para a imagem'
 
-
-    // }).then((message) => {
-    //     console.log('Image sent successfully!');
-    // }).catch((error) => {
-    //     console.error('Error sending image:', error);
-    // });
+        
+    }).then((message) => {
+        console.log('Image sent successfully!');
+    }).catch((error) => {
+        console.error('Error sending image:', error);
+    });
 
 
       await client.sendMessage(serialize,`${link}`);
