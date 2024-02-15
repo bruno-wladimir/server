@@ -600,7 +600,7 @@ console.log("numero preparado"+ serialize)
  
     if (serialize) {
 
-      const imageBuffer = fs.readFileSync('images/panela.png');
+      const imageBuffer = fs.readFileSync('/Users/brunowladimir/Downloads/server/images/panela.png');
      await client.sendMessage(serialize, imageBuffer, {
         caption: 'Legenda opcional para a imagem'
     }).then((message) => {
