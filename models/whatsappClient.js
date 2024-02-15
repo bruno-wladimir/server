@@ -10,6 +10,7 @@ const client = new Client({
   authStrategy: new LocalAuth({
     clientId: "553199631088"
   })
+  
 });
 
 // const client = new Client(
