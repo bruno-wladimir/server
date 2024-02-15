@@ -605,7 +605,17 @@ console.log("numero preparado"+ serialize)
 
       await client.sendMessage(serialize,`${link}`);
 
-    console.log("Mensagem enviada");
+    const mensagemComLink = `Você esta recebendo essa menegsam pois comprou em nosso loja! \nresponda para concorrer a prêmios:\n ${link}`;
+
+        const media = await  MessageMedia.fromUrl('https://m.media-amazon.com/images/I/81naSwftdZL._AC_UF894,1000_QL80_.jpg');
+
+
+           // const base64Image = Buffer.from(imagem).toString('base64');
+
+            await client.sendMessage(serialize,media);
+      
+      
+      console.log("Mensagem enviada");
 
       //here use _phoneId._serialized with valid whatsapp_id 
 
