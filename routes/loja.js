@@ -15,7 +15,7 @@ const { v4: uuidv4 } = require('uuid');
 const Link_validator = require('../models/Link_validator');
 const client = require('../models/whatsappClient');
 const fs = require('fs');
-
+const {MessageMedia} require('whatsapp-web.js');
 let qrread = "";
 let ativo  = false; 
 let mensagensNaoEnviadas = [];
