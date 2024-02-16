@@ -16,8 +16,6 @@ const Link_validator = require('../models/Link_validator');
 const client = require('../models/whatsappClient');
 const fs = require('fs');
 
-const {MessageMedia} =require('whatsapp-web.js');
-
 let qrread = "";
 let ativo  = false; 
 let mensagensNaoEnviadas = [];
@@ -342,7 +340,7 @@ async function gerar_link (email,telefone_cliente){
 
   await Link_validator.create(links)
  
-  const link2 = "https://app.megabolha.com.br//user-inicio/"+linkKey
+  const link2 = "https://app.megabolha.com.br/user-inicio/"+linkKey
   return link2;
 }
 
@@ -465,6 +463,60 @@ router.get('/getparticipantes', async (req, res) => {
 router.post('/salvar_perguntas', async (req, res) => {
 
   const perguntasPosVenda = [
+    {
+      categoria: "Loja Física",
+      perguntas: [
+        {
+          pergunta: "Qual é o seu nível de satisfação geral com a sua experiência de compra?",
+          opcoes: ["Excelente 😃", "Bom 🙂", "Regular😐", "Ruim☹️"]
+        },
+        {
+          pergunta: "Foi Fáfil encontrar o que procurava em nossa loja?",
+          opcoes: ["Sim 😊", "Não 😕"]
+        },
+        {
+          pergunta: "Como você avalia o ambiente geral da loja em termos de limpeza, organização",
+          opcoes: ["Excelente 😃", "Bom 🙂", "Regular😐", "Ruim☹️"]
+        },
+        {
+          pergunta: "A respeito do preço dos produtos o que você achou ?",
+          opcoes: ["Excelente 😃", "Bom 🙂", "Regular😐", "Ruim☹️"]
+        },
+        {
+          pergunta: "você encontrou uma boa variedade de produtos para escolher na loja?",
+          opcoes: ["Sim 😊", "Não 😕"]
+        }, {
+          pergunta: "Você recomendaria esta loja a um amigo ou familiar?",
+          opcoes: ["Sim 😊", "Não 😕"]
+        }
+
+      ]
+    },
+  {
+    categoria: "Loja Online",
+    perguntas: [
+      {
+        pergunta: "Qual é o seu nível de satisfação geral com a sua experiência de compra?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular😐", "Ruim☹️"]
+      },
+      {
+        pergunta: "Foi Fáfil comprar em nossa loja?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      },
+      {
+        pergunta: "A respeito do preço dos produtos o que você achou ?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular😐", "Ruim☹️"]
+      },
+      {
+        pergunta: "você encontrou uma boa variedade de produtos para escolher na loja?",
+        opcoes: ["Sim 😊", "Não"]
+      }, {
+        pergunta: "Você recomendaria esta loja a um amigo ou familiar?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      }
+
+    ]
+  },
     {
       categoria: "lojaDeRoupas",
       perguntas: [
@@ -605,18 +657,9 @@ console.log("numero preparado"+ serialize)
       const mensagemComLink = `Você esta recebendo essa menegsam pois comprou em nosso loja! \nresponda para concorrer a prêmios:\n ${link}`;
 
 
-      await client.sendMessage(serialize, mensagemComLink);
+      await client.sendMessage(serialize,`${link}`);
 
-
-        const media = await  MessageMedia.fromUrl('https://m.media-amazon.com/images/I/81naSwftdZL._AC_UF894,1000_QL80_.jpg');
-
-
-           // const base64Image = Buffer.from(imagem).toString('base64');
-
-            await client.sendMessage(serialize,media);
-      
-      
-      console.log("Mensagem enviada");
+    console.log("Mensagem enviada");
 
       //here use _phoneId._serialized with valid whatsapp_id 
 
