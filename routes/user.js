@@ -174,9 +174,10 @@ router.get('/get_perguntas', async (req, res) => {
         const categoria_find = await Loja.findOne({ email: links.loja })
 
         //    console.log("loja "+ categoria_find.categoria)
+    var resposta = await Perguntas.find({ categoria: categoria_find})
 
 
-        var resposta = await Perguntas.find({ categoria: categoria_find.categoria })
+      var resposta = await Perguntas.find({ categoria: categoria_find.categoria })
 
 
         //  console.log("links"+links)
