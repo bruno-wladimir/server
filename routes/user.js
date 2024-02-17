@@ -140,8 +140,8 @@ async function disableLink(link) {
 
     const result = await Link_validator.findOne({ key: link, used: false });
 
-    console.log(result)
     if (result) {
+        console.log('link encontrado ')
         await Link_validator.updateOne({ key: link }, { $set: { used: true } })
 
     }

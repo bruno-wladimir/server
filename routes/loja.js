@@ -136,7 +136,8 @@ router.get('/get_dados_lojista', async (req, res) => {
     cidade,
     categoria,
     vendedores,
-    email
+    email,
+    logo
   }
 
   const filtro = { email: email };
