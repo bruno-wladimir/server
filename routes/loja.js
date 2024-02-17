@@ -673,7 +673,7 @@ const serialize = _phoneId._serialized;
 console.log("numero preparado"+ serialize)
  
     if (serialize) {
-      const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/images%2FilRQMHziL7c0LSCmrdMYEgolOWs1?alt=media&token=4de02881-40de-42d1-bad9-b6240d12ecae");
+      const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/mopspray.png?alt=media&token=2488a3d9-c8b4-4c32-9946-343b50e31f88");
       const arrayBuffer = await response.arrayBuffer();
 
       const buffer = Buffer.from(arrayBuffer);
@@ -691,7 +691,7 @@ console.log("numero preparado"+ serialize)
 
       const mensagemComLink = `🎉 Olá! Você está recebendo esta mensagem porque fez uma compra na loja: *${nome_loja}*.
       🚀 Vote rapidamente para concorrer a prêmios incríveis. É super fácil e rápido! Clique aqui 👉 
-      ${link}`;
+      ${link} e concorra a esse prêmio acima.` ;
 
 
       //await client.sendMessage( serialize,mensagemComLink);
