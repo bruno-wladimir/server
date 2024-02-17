@@ -127,7 +127,7 @@ router.get('/get_dados_lojista', async (req, res) => {
   const param1 = req.query.email;
 
   console.log("mensagem" + param1);
-  const { nome_loja, telefone_loja, cidade, categoria, vendedores, email } = req.body
+  const { nome_loja, telefone_loja, cidade, categoria, vendedores, email ,logo} = req.body
 
   const loja = {
 
