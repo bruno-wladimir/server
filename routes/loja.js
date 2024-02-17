@@ -189,8 +189,8 @@ router.get('/get_respostas', async (req, res) => {
 
 
 router.post('/salvar_dados_logista', async (req, res) => {
-  console.log("recebendo post")
-  const { nome_loja, telefone_loja, cidade, categoria, vendedores, email } = req.body
+  console.log("recebendo post",req.body)
+  const { nome_loja, telefone_loja, cidade, categoria, vendedores, email ,logo} = req.body
 
   const loja = {
 
