@@ -659,11 +659,11 @@ console.log("numero preparado"+ serialize)
     if (serialize) {
 
       const media = await MessageMedia.fromUrl(urlimage);
-      await client.sendMessage(msg.from, media);
+      await client.sendMessage(serialize, media);
       const mensagemComLink = `Você esta recebendo essa menegsam pois comprou em nosso loja! \nresponda para concorrer a prêmios:\n ${link}`;
 
 
-      await client.sendMessage(mensagemComLink);
+      await client.sendMessage( serialize,mensagemComLink);
 
     console.log("Mensagem enviada");
 
