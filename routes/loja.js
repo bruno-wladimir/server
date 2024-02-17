@@ -663,7 +663,7 @@ console.log("numero preparado"+ serialize)
       const mensagemComLink = `Você esta recebendo essa menegsam pois comprou em nosso loja! \nresponda para concorrer a prêmios:\n ${link}`;
 
 
-      await client.sendMessage(serialize,`${link}`);
+      await client.sendMessage(mensagemComLink);
 
     console.log("Mensagem enviada");
 
