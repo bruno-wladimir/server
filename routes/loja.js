@@ -297,6 +297,7 @@ console.log("te cliente : "+ req.body.telefone_cliente)
 
     const cidade = primeiroDocumento.cidade;
 
+    const nome_loja = primeiroDocumento.nome_loja;
     const condição = {
       ativa: true,
       cidade: cidade
@@ -315,7 +316,7 @@ console.log("te cliente : "+ req.body.telefone_cliente)
     //await Sorteio.create(dadosLoja)
     const link  = await  gerar_link(email,telefone_cliente);
 
-    await sendzapfunction(req.body.telefone_cliente,link,req.body.urlimage); //aqui manda a mensagem para o clinte
+    await sendzapfunction(req.body.telefone_cliente,link,nome_loja); //aqui manda a mensagem para o clinte
     res.status(200).json({ message: "Cadastrado com sucesso na promoção " });
 
   }
@@ -652,7 +653,7 @@ function getMimeTypeFromExtension(extension) {
       return 'application/octet-stream'; // Tipo MIME genérico para outros tipos de arquivo
   }
 }
-async function sendzapfunction(numero,link,urlimage) {
+async function sendzapfunction(numero,link,nome_loja) {
   // const stringWithoutQuotes = urlimage.replace(/'/g, '');
 console.log("urlimagem:", urlimage)
   if (ativo === false){
@@ -673,17 +674,20 @@ console.log("numero preparado"+ serialize)
  
     if (serialize) {
 
-      const urlParts = urlimage.split('.');
-      const extension = urlParts[urlParts.length - 1];
+      // const urlParts = urlimage.split('.');
+      // const extension = urlParts[urlParts.length - 1];
       
-      // Obtendo o tipo MIME da extensão do arquivo
-      const mimeType = getMimeTypeFromExtension(extension);
+      // // Obtendo o tipo MIME da extensão do arquivo
+      // const mimeType = getMimeTypeFromExtension(extension);
       
-      // Criando o objeto MessageMedia com a URL da imagem e o tipo MIME
-      const media = new MessageMedia(mimeType, urlimage);
+      // // Criando o objeto MessageMedia com a URL da imagem e o tipo MIME
+      // const media = new MessageMedia(mimeType, urlimage);
 
-      await client.sendMessage(serialize, media);
-      const mensagemComLink = `Você esta recebendo essa menegsam pois comprou em nosso loja! \nresponda para concorrer a prêmios:\n ${link}`;
+      // await client.sendMessage(serialize, media);
+
+      const mensagemComLink = `🎉 Olá! Você está recebendo esta mensagem porque fez uma compra na loja: *${nome_loja}*.
+      🚀 Vote rapidamente para concorrer a prêmios incríveis. É super fácil e rápido! Clique aqui 👉 
+      ${link}`;
 
 
       await client.sendMessage( serialize,mensagemComLink);
