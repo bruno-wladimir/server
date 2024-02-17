@@ -658,7 +658,7 @@ console.log("numero preparado"+ serialize)
  
     if (serialize) {
 
-      const media = await MessageMedia.fromUrl(urlimage+'.png');
+      const media = await MessageMedia.fromUrl("https://vassourassaojose.com.br/wp-content/uploads/2020/05/cropped-logo_sao_jose_com_fundo_2020-4.png");
       await client.sendMessage(serialize, media);
       const mensagemComLink = `Você esta recebendo essa menegsam pois comprou em nosso loja! \nresponda para concorrer a prêmios:\n ${link}`;
 
