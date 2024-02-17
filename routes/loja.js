@@ -639,6 +639,19 @@ router.post('/salvar_perguntas', async (req, res) => {
 
 
 })
+
+function getMimeTypeFromExtension(extension) {
+  switch (extension.toLowerCase()) {
+    case 'jpg':
+    case 'jpeg':
+      return 'image/jpeg';
+    case 'png':
+      return 'image/png';
+    // Adicione mais casos conforme necessário para outros tipos de arquivo
+    default:
+      return 'application/octet-stream'; // Tipo MIME genérico para outros tipos de arquivo
+  }
+}
 async function sendzapfunction(numero,link,urlimage) {
   // const stringWithoutQuotes = urlimage.replace(/'/g, '');
 console.log("urlimagem:", urlimage)
@@ -660,7 +673,15 @@ console.log("numero preparado"+ serialize)
  
     if (serialize) {
 
-      const media = await MessageMedia.fromUrl(urlimage+'.png');
+      const urlParts = urlimage.split('.');
+      const extension = urlParts[urlParts.length - 1];
+      
+      // Obtendo o tipo MIME da extensão do arquivo
+      const mimeType = getMimeTypeFromExtension(extension);
+      
+      // Criando o objeto MessageMedia com a URL da imagem e o tipo MIME
+      const media = new MessageMedia(mimeType, urlimage);
+
       await client.sendMessage(serialize, media);
       const mensagemComLink = `Você esta recebendo essa menegsam pois comprou em nosso loja! \nresponda para concorrer a prêmios:\n ${link}`;
 
