@@ -66,7 +66,7 @@ router.post('/salvar_resposta', async (req, res) => {
 
             await Respostas.create(salvar_db)
             // const nova_loja = await loja.save();
-            //  await disableLink(link)
+             await disableLink(link)
 
             if (ativo == true) {
                 const _phoneId = await client.getNumberId("55" + link_.tel_cliente)
