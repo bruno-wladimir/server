@@ -674,7 +674,9 @@ console.log("numero preparado"+ serialize)
  
     if (serialize) {
       const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/images%2FilRQMHziL7c0LSCmrdMYEgolOWs1?alt=media&token=4de02881-40de-42d1-bad9-b6240d12ecae");
-      const buffer = await response.buffer();
+      const arrayBuffer = await response.arrayBuffer();
+
+      const buffer = Buffer.from(arrayBuffer);
 
       // const urlParts = urlimage.split('.');
       // const extension = urlParts[urlParts.length - 1];
