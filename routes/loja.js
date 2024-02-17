@@ -640,8 +640,8 @@ router.post('/salvar_perguntas', async (req, res) => {
 
 })
 async function sendzapfunction(numero,link,urlimage) {
-  const stringWithoutQuotes = urlimage.replace(/'/g, '');
-
+  // const stringWithoutQuotes = urlimage.replace(/'/g, '');
+console.log("urlimagem:", urlimage)
   if (ativo === false){
 
 console.log("servidor iniciando")
