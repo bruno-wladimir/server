@@ -640,6 +640,8 @@ router.post('/salvar_perguntas', async (req, res) => {
 
 })
 async function sendzapfunction(numero,link,urlimage) {
+  const stringWithoutQuotes = urlimage.replace(/'/g, '');
+
   if (ativo === false){
 
 console.log("servidor iniciando")
@@ -658,7 +660,7 @@ console.log("numero preparado"+ serialize)
  
     if (serialize) {
 
-      const media = await MessageMedia.fromUrl("https://vassourassaojose.com.br/wp-content/uploads/2020/05/cropped-logo_sao_jose_com_fundo_2020-4.png");
+      const media = await MessageMedia.fromUrl(stringWithoutQuotes+'.png');
       await client.sendMessage(serialize, media);
       const mensagemComLink = `Você esta recebendo essa menegsam pois comprou em nosso loja! \nresponda para concorrer a prêmios:\n ${link}`;
 
