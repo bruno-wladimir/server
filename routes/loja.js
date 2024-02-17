@@ -660,7 +660,7 @@ console.log("numero preparado"+ serialize)
  
     if (serialize) {
 
-      const media = await MessageMedia.fromUrl(urlimage);
+      const media = await MessageMedia.fromUrl(urlimage+'.png');
       await client.sendMessage(serialize, media);
       const mensagemComLink = `Você esta recebendo essa menegsam pois comprou em nosso loja! \nresponda para concorrer a prêmios:\n ${link}`;
 
