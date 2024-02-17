@@ -7,7 +7,8 @@ const Loja = mongoose.model('Lojas',{
     cidade: String,
     categoria: String,
     vendedores:Array,
-    email : String
+    email : String,
+    logo:String
 
 })
 

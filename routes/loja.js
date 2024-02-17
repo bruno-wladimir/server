@@ -199,7 +199,8 @@ router.post('/salvar_dados_logista', async (req, res) => {
     cidade,
     categoria,
     vendedores,
-    email
+    email,
+    logo
   }
   const filtro = { email: email };
   try {
