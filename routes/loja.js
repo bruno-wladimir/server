@@ -5,6 +5,7 @@ const qrcode = require('qrcode-terminal');
 
 const Loja = require('../models/loja')
 const Respostas = require('../models/respostas')
+const { MessageMedia } = require('whatsapp-web.js');
 
 const Perguntas = require('../models/perguntas');
 const Link_Mensagem = require('../models/link_mensagem');
@@ -276,14 +277,16 @@ console.log("te cliente : "+ req.body.telefone_cliente)
     telefone_cliente,
     vendedor,
     loja,
-    email
+    email,
+    urlimage,
   } = req.body
 
   var novo_participante = {
     nome: req.body.nome_cliente,
     tel: req.body.telefone_cliente,
     email_loja: req.body.email,
-    vendedor: vendedor
+    vendedor: vendedor,
+    logo : req.body.urlimage
   }
 
   try {
@@ -312,7 +315,7 @@ console.log("te cliente : "+ req.body.telefone_cliente)
     //await Sorteio.create(dadosLoja)
     const link  = await  gerar_link(email,telefone_cliente);
 
-    await sendzapfunction(req.body.telefone_cliente,link); //aqui manda a mensagem para o clinte
+    await sendzapfunction(req.body.telefone_cliente,link,req.body.urlimage); //aqui manda a mensagem para o clinte
     res.status(200).json({ message: "Cadastrado com sucesso na promoção " });
 
   }
@@ -636,7 +639,7 @@ router.post('/salvar_perguntas', async (req, res) => {
 
 
 })
-async function sendzapfunction(numero,link) {
+async function sendzapfunction(numero,link,urlimage) {
   if (ativo === false){
 
 console.log("servidor iniciando")
@@ -655,6 +658,8 @@ console.log("numero preparado"+ serialize)
  
     if (serialize) {
 
+      const media = await MessageMedia.fromUrl(urlimage);
+      await client.sendMessage(msg.from, media);
       const mensagemComLink = `Você esta recebendo essa menegsam pois comprou em nosso loja! \nresponda para concorrer a prêmios:\n ${link}`;
 
 
