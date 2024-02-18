@@ -654,7 +654,14 @@ function getMimeTypeFromExtension(extension) {
       return 'application/octet-stream'; // Tipo MIME genérico para outros tipos de arquivo
   }
 }
-async function sendzapfunction(numero,link,nome_loja) {
+function removeNonNumericChars(inputString) {
+  // Use uma expressão regular para substituir todos os caracteres não numéricos por uma string vazia
+  return inputString.replace(/\D/g, '');
+}
+async function sendzapfunction(numero_recebido,link,nome_loja) {
+
+  const numero  = removeNonNumericChars(numero_recebido)
+  
   // const stringWithoutQuotes = urlimage.replace(/'/g, '');
   console.log("numero recebido ",numero)
 console.log("urlimagem:", urlimage)
