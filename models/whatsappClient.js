@@ -22,7 +22,7 @@ const client = new Client({
 
 
 // Inicialize o cliente
-client.initialize();
+//client.initialize();
 
 // Exporte o cliente para ser usado em outros lugares
 module.exports = client;

@@ -59,7 +59,7 @@ router.post('/salvar_resposta', async (req, res) => {
             const salvar_db = {// esse modelo precis ser identico ao models
 
                 respostas,
-                id_loja: "1",
+                id_loja:link_.loja,
                 Data: Date.now(),
             }
 

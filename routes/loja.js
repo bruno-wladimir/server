@@ -165,7 +165,7 @@ router.get('/get_dados_lojista', async (req, res) => {
 });
 
 router.get('/get_respostas', async (req, res) => {
-  console.log("estou suqi")
+  
   const id_pesquisa = '1';
 
   try {
@@ -244,8 +244,8 @@ router.post('/criarloja', async (req, res) => {
 
   try {
 
-    await Loja.create(loja)
-
+    var dados =  await  Loja.create(loja)
+console.log(dados)
     // const nova_loja = await loja.save();
     res.status(201).json({ message: "incluido com suscesso" });
 
