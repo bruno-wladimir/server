@@ -165,13 +165,14 @@ router.get('/get_dados_lojista', async (req, res) => {
 });
 
 router.get('/get_respostas', async (req, res) => {
-  
-  const id_pesquisa = '1';
+  const linkKey  = req.query.email
+
+ 
 
   try {
     // await client.sendMessage("55"+ parametro2+"@c.us", parametro1);
 
-    const respostasDaLoja = await Respostas.find({ id_loja: id_pesquisa })
+    const respostasDaLoja = await Respostas.find({ id_loja: linkKey })
 
 
 
