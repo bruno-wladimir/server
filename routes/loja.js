@@ -332,7 +332,7 @@ console.log("te cliente : "+ req.body.telefone_cliente)
 
 
 async function gerar_link (email,telefone_cliente){
-  console.log(" GERAR LINK ")
+  console.log(" tel ")
 
   const linkKey = uuidv4();
 
@@ -656,6 +656,7 @@ function getMimeTypeFromExtension(extension) {
 }
 async function sendzapfunction(numero,link,nome_loja) {
   // const stringWithoutQuotes = urlimage.replace(/'/g, '');
+  console.log("numero recebido ",numero)
 console.log("urlimagem:", urlimage)
   if (ativo === false){
 
