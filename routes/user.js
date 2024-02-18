@@ -69,7 +69,9 @@ router.post('/salvar_resposta', async (req, res) => {
              await disableLink(link)
 
             if (ativo == true) {
-                const _phoneId = await client.getNumberId("55" + link_.tel_cliente)
+
+                const numero  = removeNonNumericChars(link_.tel_cliente)
+                const _phoneId = await client.getNumberId("55" + numero)
                 // //console.log("enviando para "+ _phoneId._serialized)
                 const serialize = _phoneId._serialized;
                 res.status(201).json({ message: "Resposta Salva" });
@@ -101,6 +103,10 @@ router.post('/salvar_resposta', async (req, res) => {
 
 
 })
+function removeNonNumericChars(inputString) {
+    // Use uma expressão regular para substituir todos os caracteres não numéricos por uma string vazia
+    return inputString.replace(/\D/g, '');
+  }
 function salvarmensagemoff(numero,message){
 
     mensagensNaoEnviadas.push({ 
