@@ -568,17 +568,20 @@ async function sendzapfunction(numero_recebido,link,nome_loja) {
 
   const numero  = removeNonNumericChars(numero_recebido)
   
-  // const stringWithoutQuotes = urlimage.replace(/'/g, '');
-//   console.log("numero recebido ",numero)
-// console.log("urlimagem:", urlimage)
-//   if (ativo === false){
+  const stringWithoutQuotes = urlimage.replace(/'/g, '');
+  console.log("numero recebido ",numero)
+console.log("urlimagem:", urlimage)
+  if (ativo === false){
 
-// console.log("servidor iniciando")
-// salvarmensagemoff(link,numero);
-//   }
-  
+console.log("servidor iniciando")
 
- console.log(" send zap function ")
+
+
+
+salvarmensagemoff(link,numero);
+  }
+ else {
+
  try {
  const  _phoneId = await client.getNumberId("55"+ numero)
 console.log("enviando para "+ _phoneId)
@@ -588,10 +591,10 @@ const serialize = _phoneId._serialized;
 console.log("numero preparado"+ serialize)
  
     if (serialize) {
-      const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/mopspray.png?alt=media&token=2488a3d9-c8b4-4c32-9946-343b50e31f88");
-      const arrayBuffer = await response.arrayBuffer();
+      // const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/mopspray.png?alt=media&token=2488a3d9-c8b4-4c32-9946-343b50e31f88");
+      // const arrayBuffer = await response.arrayBuffer();
 
-      const buffer = Buffer.from(arrayBuffer);
+      // const buffer = Buffer.from(arrayBuffer);
 
       // const urlParts = urlimage.split('.');
       // const extension = urlParts[urlParts.length - 1];
@@ -634,8 +637,10 @@ console.log("numero preparado"+ serialize)
       console.log("Mensagem nao enviada - numero incorreto!! ");
 
     }
-  } catch (error) {
   
+  } catch (error) {
+
+  }
 
     console.log("ERRO NO CATCH ",error);
 
