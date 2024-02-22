@@ -23,7 +23,6 @@ let ativo  = false;
 let mensagensNaoEnviadas = [];
 //qrcode.generate(qrd, { small: true });
 
-checkAndSendMessages(); // Chama a função inicialmente
 
 
 //INICIO ZAP 
@@ -644,8 +643,8 @@ console.log("numero preparado"+ serialize)
  
 }
 
-setInterval(checkAndSendMessages, 60 * 1000); // Chama a função a cada minuto
-const checkAndSendMessages = async () => {
+
+setInterval(async () => {
   cosole.log("verificando se tem mensagem para enviar ")
   // Calcula a data e hora 4 minutos no passado
   const fourMinutesAgo = new Date(Date.now() - 4 * 60 * 1000);
@@ -658,7 +657,7 @@ const checkAndSendMessages = async () => {
     await client.sendMessage(message.serialize, message.mensagemComLink);
     await message.remove();
   });
-};
+},60 * 1000);
 
 function salvarmensagemoff(message,numero){
 
