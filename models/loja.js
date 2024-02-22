@@ -8,7 +8,8 @@ const Loja = mongoose.model('Lojas',{
     categoria: String,
     vendedores:Array,
     email : String,
-    logo:String
+    logo:String,
+    qtd_envio: Number
 
 })
 
