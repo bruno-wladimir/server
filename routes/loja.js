@@ -298,7 +298,9 @@ console.log("te cliente : "+ req.body.telefone_cliente)
     const primeiroDocumento = await Loja.findOne({ email: email });
 
     if (primeiroDocumento){
-
+      if (typeof primeiroDocumento.qtd_envio !== 'number') {
+        primeiroDocumento.qtd_envio = 0; // Define um valor padrão
+      }
       primeiroDocumento.qtd_envio += 1; // Incrementando o campo qtd_envio
       await primeiroDocumento.save(); // Salvando o documento atualizado no banco de dados
 
