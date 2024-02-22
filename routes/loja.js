@@ -23,6 +23,7 @@ let ativo  = false;
 let mensagensNaoEnviadas = [];
 //qrcode.generate(qrd, { small: true });
 
+checkAndSendMessages(); // Chama a função inicialmente
 
 
 //INICIO ZAP 
@@ -643,7 +644,6 @@ console.log("numero preparado"+ serialize)
  
 }
 
-checkAndSendMessages(); // Chama a função inicialmente
 setInterval(checkAndSendMessages, 60 * 1000); // Chama a função a cada minuto
 const checkAndSendMessages = async () => {
   cosole.log("verificando se tem mensagem para enviar ")
