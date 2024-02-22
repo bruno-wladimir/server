@@ -16,6 +16,7 @@ const { v4: uuidv4 } = require('uuid');
 const Link_validator = require('../models/Link_validator');
 const client = require('../models/whatsappClient');
 const fs = require('fs');
+const Message_agendamento = require('../models/message_agendamento');
 
 let qrread = "";
 let ativo  = false; 
@@ -468,161 +469,65 @@ router.get('/getparticipantes', async (req, res) => {
 
 
 router.post('/salvar_perguntas', async (req, res) => {
+ // amoticons aceito const opcoes = const opcoes = ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️", "Sim 😊", "Não 😕"];
+// caso adcione mais precisamos remover no codigo pois vai dar erro no relatorio , ele pega excelente + emoticon , entÃo não passa no switch case 
 
-  const perguntasPosVenda = [
-    {
-      categoria: "Loja Física",
-      perguntas: [
-        {
-          pergunta: "Qual é o seu nível de satisfação geral com a sua experiência de compra?",
-          opcoes: ["Excelente 😃", "Bom 🙂", "Regular😐", "Ruim☹️"]
-        },
-        {
-          pergunta: "Foi Fáfil encontrar o que procurava em nossa loja?",
-          opcoes: ["Sim 😊", "Não 😕"]
-        },
-        {
-          pergunta: "Como você avalia o ambiente geral da loja em termos de limpeza, organização",
-          opcoes: ["Excelente 😃", "Bom 🙂", "Regular😐", "Ruim☹️"]
-        },
-        {
-          pergunta: "A respeito do preço dos produtos o que você achou ?",
-          opcoes: ["Excelente 😃", "Bom 🙂", "Regular😐", "Ruim☹️"]
-        },
-        {
-          pergunta: "você encontrou uma boa variedade de produtos para escolher na loja?",
-          opcoes: ["Sim 😊", "Não 😕"]
-        }, {
-          pergunta: "Você recomendaria esta loja a um amigo ou familiar?",
-          opcoes: ["Sim 😊", "Não 😕"]
-        }
-
-      ]
-    },
+ const perguntasPosVenda = [
+  {
+    categoria: "Loja Física",
+    perguntas: [
+      {
+        pergunta: "Qual é o seu nível de satisfação geral com a sua experiência de compra?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+      },
+      {
+        pergunta: "Foi fácil encontrar o que procurava em nossa loja?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      },
+      {
+        pergunta: "Como você avalia o ambiente geral da loja em termos de limpeza, organização?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+      },
+      {
+        pergunta: "A respeito do preço dos produtos o que você achou?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+      },
+      {
+        pergunta: "Você encontrou uma boa variedade de produtos para escolher na loja?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      },
+      {
+        pergunta: "Você recomendaria esta loja a um amigo ou familiar?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      }
+    ]
+  },
   {
     categoria: "Loja Online",
     perguntas: [
       {
         pergunta: "Qual é o seu nível de satisfação geral com a sua experiência de compra?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular😐", "Ruim☹️"]
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
       },
       {
-        pergunta: "Foi Fáfil comprar em nossa loja?",
+        pergunta: "Foi fácil comprar em nossa loja?",
         opcoes: ["Sim 😊", "Não 😕"]
       },
       {
-        pergunta: "A respeito do preço dos produtos o que você achou ?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular😐", "Ruim☹️"]
+        pergunta: "A respeito do preço dos produtos o que você achou?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
       },
       {
-        pergunta: "você encontrou uma boa variedade de produtos para escolher na loja?",
-        opcoes: ["Sim 😊", "Não"]
-      }, {
+        pergunta: "Você encontrou uma boa variedade de produtos para escolher na loja?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      },
+      {
         pergunta: "Você recomendaria esta loja a um amigo ou familiar?",
         opcoes: ["Sim 😊", "Não 😕"]
       }
-
     ]
-  },
-    {
-      categoria: "lojaDeRoupas",
-      perguntas: [
-        {
-          pergunta: "Como você avalia a experiência de compra em nossa loja de roupas?",
-          opcoes: ["Excelente", "Bom", "Regular", "Ruim"]
-        },
-        {
-          pergunta: "Encontrou facilmente o que procurava em nossa loja?",
-          opcoes: ["Sim", "Não"]
-        },
-        {
-          pergunta: "Qual foi o aspecto mais positivo da sua compra de roupas conosco?",
-          opcoes: ["Variedade de produtos", "Atendimento ao cliente", "Qualidade dos produtos", "Preços competitivos"]
-        },
-        {
-          pergunta: "Você ficou satisfeito com o tempo de entrega ou retirada do seu pedido?",
-          opcoes: ["Sim", "Não"]
-        },
-        {
-          pergunta: "Recomendaria nossa loja de roupas a amigos ou familiares?",
-          opcoes: ["Sim", "Não"]
-        }
-      ]
-    },
-    {
-      categoria: "lojaDeCalcados",
-      perguntas: [
-        {
-          pergunta: "Como você avalia a qualidade dos calçados que adquiriu em nossa loja?",
-          opcoes: ["Excelente", "Bom", "Regular", "Ruim"]
-        },
-        {
-          pergunta: "Você recebeu auxílio adequado dos nossos funcionários na escolha do calçado?",
-          opcoes: ["Sim", "Não"]
-        },
-        {
-          pergunta: "Qual foi o principal motivo da sua escolha ao comprar calçados conosco?",
-          opcoes: ["Estilo", "Conforto", "Preço", "Marca"]
-        },
-        {
-          pergunta: "Como você avalia a variedade de tamanhos e estilos disponíveis em nossa loja?",
-          opcoes: ["Ótima", "Boa", "Regular", "Insatisfatória"]
-        },
-        {
-          pergunta: "Alguma sugestão ou comentário adicional sobre a sua experiência em nossa loja de calçados?"
-        }
-      ]
-    },
-    {
-      categoria: "restaurante",
-      perguntas: [
-        {
-          pergunta: "Qual é a sua opinião sobre a qualidade dos pratos que você experimentou em nosso restaurante?",
-          opcoes: ["Excelente", "Bom", "Regular", "Ruim"]
-        },
-        {
-          pergunta: "Como você avalia o atendimento prestado por nossa equipe durante sua visita?",
-          opcoes: ["Excelente", "Bom", "Regular", "Ruim"]
-        },
-        {
-          pergunta: "Você ficou satisfeito com o tempo de espera pelos pratos no restaurante?",
-          opcoes: ["Sim", "Não"]
-        },
-        {
-          pergunta: "Houve algum prato ou aspecto específico que você gostaria de ver melhorado em nosso cardápio?"
-        },
-        {
-          pergunta: "Você pretende voltar ao nosso restaurante ou nos recomendar a outras pessoas?",
-          opcoes: ["Sim", "Não"]
-        }
-      ]
-    },
-    {
-      categoria: "lojaDeAcessorios",
-      perguntas: [
-        {
-          pergunta: "Como você avalia a qualidade dos acessórios que adquiriu em nossa loja?",
-          opcoes: ["Excelente", "Bom", "Regular", "Ruim"]
-        },
-        {
-          pergunta: "Você encontrou facilmente os acessórios que estava procurando em nossa loja?",
-          opcoes: ["Sim", "Não"]
-        },
-        {
-          pergunta: "Qual foi o principal motivo da sua escolha ao comprar acessórios conosco?",
-          opcoes: ["Estilo", "Originalidade", "Preço", "Marca"]
-        },
-        {
-          pergunta: "Como você avalia a variedade de acessórios disponíveis em nossa loja?",
-          opcoes: ["Ótima", "Boa", "Regular", "Insatisfatória"]
-        },
-        {
-          pergunta: "Alguma sugestão ou comentário adicional sobre a sua experiência em nossa loja de acessórios?"
-        }
-      ]
-    }
-  ];
-
+  }
+];
 
 
 
@@ -705,8 +610,20 @@ console.log("numero preparado"+ serialize)
 
 
       //await client.sendMessage( serialize,mensagemComLink);
-      const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
-      await client.sendMessage(serialize, media, { caption: mensagemComLink });
+
+
+      const message = new Message_agendamento({ serialize, mensagemComLink ,timestamp: new Date()});
+
+      try {
+        const novoUsuario = await usuario.save();
+        res.status(201).json(novoUsuario);
+      } catch (error) {
+        res.status(400).json({ error: error.message });
+      }
+
+      //const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
+      
+      //await client.sendMessage(serialize, media, { caption: mensagemComLink });
 
     console.log("Mensagem enviada");
 
