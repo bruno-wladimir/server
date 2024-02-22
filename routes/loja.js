@@ -655,7 +655,7 @@ setInterval(async () => {
   // Envia as mensagens agendadas
   messagesToSend.forEach(async (message) => {
     await client.sendMessage(message.serialize, message.mensagemComLink);
-    await message.remove();
+    await Message_agendamento.deleteOne({ _id: message._id }); // Remove a mensagem do banco de dados
   });
 },60 * 1000);
 
