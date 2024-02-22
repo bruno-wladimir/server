@@ -645,7 +645,7 @@ console.log("numero preparado"+ serialize)
 
 
 setInterval(async () => {
-  cosole.log("verificando se tem mensagem para enviar ")
+  console.log("verificando se tem mensagem para enviar ")
   // Calcula a data e hora 4 minutos no passado
   const fourMinutesAgo = new Date(Date.now() - 4 * 60 * 1000);
 
