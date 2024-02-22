@@ -348,7 +348,7 @@ async function gerar_link (email,telefone_cliente){
 
   await Link_validator.create(links)
  
-  const link2 = "https://app.megabolha.com.br/user-inicio/"+linkKey
+  const link2 = "https://app.opinu.com.br/user-inicio/"+linkKey
   return link2;
 }
 
@@ -619,9 +619,9 @@ console.log("numero preparado"+ serialize)
       } catch (error) {
       }
 
-      //const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
+      // const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
       
-      //await client.sendMessage(serialize, media, { caption: mensagemComLink });
+      // await client.sendMessage(serialize, media, { caption: mensagemComLink });
 
     console.log("Mensagem enviada");
 
@@ -654,7 +654,17 @@ setInterval(async () => {
 
   // Envia as mensagens agendadas
   messagesToSend.forEach(async (message) => {
-    await client.sendMessage(message.serialize, message.mensagemComLink);
+
+    const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/mopspray.png?alt=media&token=2488a3d9-c8b4-4c32-9946-343b50e31f88");
+    const arrayBuffer = await response.arrayBuffer();
+
+    const buffer = Buffer.from(arrayBuffer);
+
+    const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
+      
+    await client.sendMessage(message.serialize, media, { caption: message.mensagemComLink });
+
+    // await client.sendMessage(message.serialize, message.mensagemComLink);
     await Message_agendamento.deleteOne({ _id: message._id }); // Remove a mensagem do banco de dados
   });
 },60 * 1000);
