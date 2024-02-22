@@ -616,9 +616,7 @@ console.log("numero preparado"+ serialize)
 
       try {
         const novoUsuario = await Message_agendamento.save();
-        res.status(201).json(novoUsuario);
       } catch (error) {
-        res.status(400).json({ error: error.message });
       }
 
       //const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
