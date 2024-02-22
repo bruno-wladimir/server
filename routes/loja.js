@@ -569,13 +569,13 @@ async function sendzapfunction(numero_recebido,link,nome_loja) {
   const numero  = removeNonNumericChars(numero_recebido)
   
   // const stringWithoutQuotes = urlimage.replace(/'/g, '');
-  console.log("numero recebido ",numero)
-console.log("urlimagem:", urlimage)
-  if (ativo === false){
+//   console.log("numero recebido ",numero)
+// console.log("urlimagem:", urlimage)
+//   if (ativo === false){
 
-console.log("servidor iniciando")
-salvarmensagemoff(link,numero);
-  }
+// console.log("servidor iniciando")
+// salvarmensagemoff(link,numero);
+//   }
   
 
  console.log(" send zap function ")
