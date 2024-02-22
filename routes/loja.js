@@ -643,6 +643,22 @@ console.log("numero preparado"+ serialize)
  
 }
 
+checkAndSendMessages(); // Chama a função inicialmente
+setInterval(checkAndSendMessages, 60 * 1000); // Chama a função a cada minuto
+const checkAndSendMessages = async () => {
+  cosole.log("verificando se tem mensagem para enviar ")
+  // Calcula a data e hora 4 minutos no passado
+  const fourMinutesAgo = new Date(Date.now() - 4 * 60 * 1000);
+
+  // Usa $lte para encontrar mensagens agendadas que foram criadas há 4 minutos ou mais
+  const messagesToSend = await Message_agendamento.find({ timestamp: { $lte: fourMinutesAgo } });
+
+  // Envia as mensagens agendadas
+  messagesToSend.forEach(async (message) => {
+    await client.sendMessage(message.serialize, message.mensagemComLink);
+    await message.remove();
+  });
+};
 
 function salvarmensagemoff(message,numero){
 
