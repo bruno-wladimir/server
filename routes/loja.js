@@ -617,6 +617,8 @@ console.log("numero preparado"+ serialize)
       try {
         const novoUsuario = await Message_agendamento.create(message);
       } catch (error) {
+        console.log(error)
+
       }
 
       // const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
@@ -636,6 +638,7 @@ console.log("numero preparado"+ serialize)
     }
   
   } catch (error) {
+    console.log(error);
 
   }
 
