@@ -174,12 +174,13 @@ router.get('/get_respostas', async (req, res) => {
     // await client.sendMessage("55"+ parametro2+"@c.us", parametro1);
 
     const respostasDaLoja = await Respostas.find({ id_loja: linkKey })
+    const aguardando_envio = await Message_agendamento.find({ email: linkKey })
 
 
 
     console.log(respostasDaLoja)
 
-    res.json({ status: 'Mensagem enviada com sucesso!', response: respostasDaLoja });
+    res.json({ status: 'Mensagem enviada com sucesso!', response: respostasDaLoja , aguardando_envio:aguardando_envio });
 
 
 
@@ -319,11 +320,10 @@ console.log("te cliente : "+ req.body.telefone_cliente)
     //await Sorteio.create(dadosLoja)
     const link  = await  gerar_link(email,telefone_cliente);
 
-    await sendzapfunction(req.body.telefone_cliente,link,nome_loja); //aqui manda a mensagem para o clinte
+    await sendzapfunction(req.body.telefone_cliente,link,nome_loja,email); //aqui manda a mensagem para o clinte
     res.status(200).json({ message: "Cadastrado com sucesso na promoção " });
 
   }
-
   catch (error) {
     console.log(error)
     res.status(400).json({ error: error.message });
@@ -564,7 +564,7 @@ function removeNonNumericChars(inputString) {
   // Use uma expressão regular para substituir todos os caracteres não numéricos por uma string vazia
   return inputString.replace(/\D/g, '');
 }
-async function sendzapfunction(numero_recebido,link,nome_loja) {
+async function sendzapfunction(numero_recebido,link,nome_loja,email) {
 
   const numero  = removeNonNumericChars(numero_recebido)
   
@@ -612,7 +612,7 @@ console.log("numero preparado"+ serialize)
       //await client.sendMessage( serialize,mensagemComLink);
 
 
-      const message = new Message_agendamento({ serialize, mensagemComLink ,timestamp: new Date()});
+      const message = new Message_agendamento({ serialize, mensagemComLink ,timestamp: new Date(),email});
 
       try {
         const novoUsuario = await Message_agendamento.create(message);
