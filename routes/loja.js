@@ -642,8 +642,6 @@ console.log("numero preparado"+ serialize)
 
   }
 
-    console.log("ERRO NO CATCH ",error);
-
   }
  
 }
