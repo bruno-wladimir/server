@@ -2,8 +2,8 @@ const  mongoose = require('mongoose');
 
 
 const Message_agendamento = mongoose.model('Message_agendamento',{
-    telefone_cliente: String,
-    link: String,
+    serialize: String,
+    mensagemComLink: String,
     timestamp: Date,
 
 })
