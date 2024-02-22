@@ -615,7 +615,7 @@ console.log("numero preparado"+ serialize)
       const message = new Message_agendamento({ serialize, mensagemComLink ,timestamp: new Date()});
 
       try {
-        const novoUsuario = await Message_agendamento.save();
+        const novoUsuario = await Message_agendamento.save(message);
       } catch (error) {
       }
 
