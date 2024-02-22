@@ -607,9 +607,9 @@ console.log("numero preparado"+ serialize)
 
       // await client.sendMessage(serialize, media);
 
-      const mensagemComLink = `🎉 Olá! Você está recebendo esta mensagem porque fez uma compra na loja: *${nome_loja}*.
-      🚀 Vote rapidamente para concorrer a prêmios incríveis. É super fácil e rápido! Clique aqui 👉 
-      ${link} e concorra a esse prêmio acima.` ;
+      const mensagemComLink = `*🎉 Olá! 🎉*\n\nocê recebe esta mensagem por ter comprado na *${nome_loja}*.\n
+      *🎉 Compartilhe sua opinião e nos ajude a melhorar (clique no link) 👉
+      ${link} Seu feedback é anônimo. A loja não tem acesso aos seus dados.` ;
 
 
       //await client.sendMessage( serialize,mensagemComLink);
@@ -665,9 +665,10 @@ setInterval(async () => {
 
     const buffer = Buffer.from(arrayBuffer);
 
-    const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
+   /// const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
       
-    await client.sendMessage(message.serialize, media, { caption: message.mensagemComLink });
+    //await client.sendMessage(message.serialize, media, { caption: message.mensagemComLink });
+    await client.sendMessage(message.serialize,message.mensagemComLink );
 
     // await client.sendMessage(message.serialize, message.mensagemComLink);
     await Message_agendamento.deleteOne({ _id: message._id }); // Remove a mensagem do banco de dados
