@@ -661,10 +661,11 @@ console.log("numero preparado"+ serialize)
 setInterval(async () => {
   console.log("verificando se tem mensagem para enviar ")
   // Calcula a data e hora 4 minutos no passado
-  const fourMinutesAgo = new Date(Date.now() - 2 * 60 * 1000);
+  //const Schedule = new Date(Date.now() - 2 * 60 * 1000); // 4 minutos 
+  const Schedule = new Date(Date.now() - 8 * 60 * 60 * 1000); // 8 horas 
 
   // Usa $lte para encontrar mensagens agendadas que foram criadas há 4 minutos ou mais
-  const messagesToSend = await Message_agendamento.find({ timestamp: { $lte: fourMinutesAgo } });
+  const messagesToSend = await Message_agendamento.find({ timestamp: { $lte: Schedule } });
 
   // Envia as mensagens agendadas
   messagesToSend.forEach(async (message) => {
