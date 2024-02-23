@@ -176,7 +176,7 @@ router.get('/get_respostas', async (req, res) => {
     const respostasDaLoja = await Respostas.find({ id_loja: linkKey })
     const aguardando_envio = await Message_agendamento.find({ email: linkKey })
 
-    const loja = await Loja.find({ email: linkKey })
+    const loja = await Loja.findOne({ email: linkKey })
 
 
 
