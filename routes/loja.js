@@ -176,11 +176,13 @@ router.get('/get_respostas', async (req, res) => {
     const respostasDaLoja = await Respostas.find({ id_loja: linkKey })
     const aguardando_envio = await Message_agendamento.find({ email: linkKey })
 
+    const loja = await Loja.find({ email: linkKey })
+
 
 
     console.log(respostasDaLoja)
 
-    res.json({ status: 'Mensagem enviada com sucesso!', response: respostasDaLoja , aguardando_envio:aguardando_envio });
+    res.json({ status: 'Mensagem enviada com sucesso!', response: respostasDaLoja , aguardando_envio:aguardando_envio, qtd_envio:loja.qtd_envio });
 
 
 
