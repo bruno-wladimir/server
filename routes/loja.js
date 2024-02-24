@@ -578,17 +578,14 @@ function removeNonNumericChars(inputString) {
 async function sendzapfunction(numero_recebido,link,nome_loja,email) {
 
   const numero  = removeNonNumericChars(numero_recebido)
-  
-  //const stringWithoutQuotes = urlimage.replace(/'/g, '');
-  console.log("numero recebido ",numero)
-//console.log("urlimagem:", urlimage)
-  if (ativo === false){
 
-console.log("servidor iniciando")
+//   if (ativo === false){
 
-salvarmensagemoff(link,numero);
-  }
- else {
+// console.log("servidor iniciando")
+
+// salvarmensagemoff(link,numero);
+//   }
+
 
  try {
  const  _phoneId = await client.getNumberId("55"+ numero)
@@ -656,11 +653,17 @@ const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por te
 
   }
  
-}
+
 
 
 setInterval(async () => {
   console.log("verificando se tem mensagem para enviar ")
+  if (ativo === false){
+    console.log("verificando servdor zap ainda iniciando ou offline ")
+
+  return 
+  }
+  else {
   // Calcula a data e hora 4 minutos no passado
   //const Schedule = new Date(Date.now() - 2 * 60 * 1000); // 4 minutos 
   const Schedule = new Date(Date.now() - 8 * 60 * 60 * 1000); // 8 horas 
@@ -684,7 +687,7 @@ setInterval(async () => {
     // await client.sendMessage(message.serialize, message.mensagemComLink);
     await Message_agendamento.deleteOne({ _id: message._id }); // Remove a mensagem do banco de dados
   });
-},60 * 1000);
+}},30 * 1000);
 
 function salvarmensagemoff(message,numero){
 
