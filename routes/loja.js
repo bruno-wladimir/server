@@ -596,14 +596,12 @@ async function sendzapfunction(numero_recebido,link,nome_loja,email) {
 // const serialize = _phoneId._serialized;
 
 const limiteMensagem = moment();
-
-    // if (serialize) {
-   
-const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \nCompartilhe sua opinião e nos ajude a melhorar.\n\nSua resposta é anônima. A loja não tem acesso aos seus dados.\n\nPara habilitar o link abaixo, responda com '1' essa mensagem .\n*(Clique no link abaixo)*👇\n${link}`;
 const _data = moment();
-limiteMensagem.set({ hour: 17, minute: 0, second: 0, millisecond: 0 });
 
-      const message = new Message_agendamento({ _numero, mensagemComLink ,timestamp: limiteMensagem,email});
+console.log("timezone: ",_data )
+const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \nCompartilhe sua opinião e nos ajude a melhorar.\n\nSua resposta é anônima. A loja não tem acesso aos seus dados.\n\nPara habilitar o link abaixo, responda com '1' essa mensagem .\n*(Clique no link abaixo)*👇\n${link}`;
+
+      const message = new Message_agendamento({ _numero, mensagemComLink ,timestamp: _data,email});
 
       try {
         const novoUsuario = await Message_agendamento.create(message);
