@@ -26,33 +26,15 @@ client.on('authenticated', () => {
 
 router.post('/salvar_resposta', async (req, res) => {
 
-    //console.log("estou aqui",req.body)
-
-
     const { respostas, link } = req.body
 
     console.log(respostas);
-    // const respostas_recebidas =[ {
-    //     pergunta,
-    //     resposta,
-
-    // }]
-
-    //console.log(respostas)
-
-
-    // const lojafind = await Link_validator.findOne({ key: link, used: false });
-    // console.log("retorno loja "+ lojafind)
 
     try {
 
         const link_ = await Link_validator.findOne({ key: link, used: false });
 
-
         console.log("linkkkkkk" + link_.tel_cliente)
-
-
-
 
         if (link_) {
 
