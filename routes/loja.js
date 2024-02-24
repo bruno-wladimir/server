@@ -599,8 +599,8 @@ async function sendzapfunction(numero_recebido,link,nome_loja,email) {
     // if (serialize) {
    
 const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \nCompartilhe sua opinião e nos ajude a melhorar.\n\nSua resposta é anônima. A loja não tem acesso aos seus dados.\n\nPara habilitar o link abaixo, responda com '1' essa mensagem .\n*(Clique no link abaixo)*👇\n${link}`;
-const data = moment();
-      const message = new Message_agendamento({ _numero, mensagemComLink ,timestamp: data,email});
+const _data = moment();
+      const message = new Message_agendamento({ _numero, mensagemComLink ,timestamp: _data,email});
 
       try {
         const novoUsuario = await Message_agendamento.create(message);
@@ -647,16 +647,16 @@ setInterval(async () => {
   // const messagesToSend = await Message_agendamento.find({ timestamp: { $lte: Schedule } });
 
 
-  const agora = new Date();
-  const limiteInferior = new Date(agora);
-  limiteInferior.setHours(17, 0, 0, 0); // Define o limite inferior como 17h hoje
-  const limiteSuperior = new Date(agora);
-  limiteSuperior.setHours(19, 0, 0, 0); // Define o limite superior como 19h hoje
-  
+  const agora = moment()
+  const limiteInferior = moment();
+  limiteInferior.set({ hour: 17, minute: 0, second: 0, millisecond: 0 });
+  const limiteSuperior =moment();
+  limiteInferior.set({ hour: 19, minute: 0, second: 0, millisecond: 0 });
+
   // Verifica se a mensagem foi criada há mais de 24 horas
-  const limiteMensagem = new Date(agora);
-  limiteMensagem.setDate(limiteMensagem.getDate() - 1);
-  
+  const limiteMensagem = moment();
+  limiteMensagem.subtract(1, 'days');
+
   const messagesToSend = await Message_agendamento.find({
       timestamp: {
           $lte: limiteMensagem, // Mensagem criada há mais de 24 horas
