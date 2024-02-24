@@ -587,41 +587,18 @@ async function sendzapfunction(numero_recebido,link,nome_loja,email) {
 //   }
 
 
- try {
- const  _phoneId = await client.getNumberId("55"+ numero)
-console.log("enviando para "+ _phoneId)
+  const _numero = "55"+numero;
+//  const  _phoneId = await client.getNumberId("55"+ numero)
 
 
-const serialize = _phoneId._serialized;
-console.log("numero preparado"+ serialize)
+// const serialize = _phoneId._serialized;
+
  
-    if (serialize) {
-      // const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/mopspray.png?alt=media&token=2488a3d9-c8b4-4c32-9946-343b50e31f88");
-      // const arrayBuffer = await response.arrayBuffer();
-
-      // const buffer = Buffer.from(arrayBuffer);
-
-      // const urlParts = urlimage.split('.');
-      // const extension = urlParts[urlParts.length - 1];
-      
-      // // Obtendo o tipo MIME da extensão do arquivo
-      // const mimeType = getMimeTypeFromExtension(extension);
-      
-      // // Criando o objeto MessageMedia com a URL da imagem e o tipo MIME
-      // const media = new MessageMedia(mimeType, urlimage);
-
-      // await client.sendMessage(serialize, media);
-
-    //   const mensagemComLink = `*🎉 Olá! 🎉*\n\n Você recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \n
-    //   Compartilhe sua opinião e nos ajude a melhorar
-    // \nSua respostá é anônima. A loja não tem acesso aos seus dados.\n *Digite 1 para ativar o link abaixo*\n*(clique no link)*👇\n${link}` ;
- 
+    // if (serialize) {
+   
 const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \nCompartilhe sua opinião e nos ajude a melhorar.\n\nSua resposta é anônima. A loja não tem acesso aos seus dados.\n\nPara habilitar o link abaixo, responda com '1' essa mensagem .\n*(Clique no link abaixo)*👇\n${link}`;
 
-      //await client.sendMessage( serialize,mensagemComLink);
-
-
-      const message = new Message_agendamento({ serialize, mensagemComLink ,timestamp: new Date(),email});
+      const message = new Message_agendamento({ _numero, mensagemComLink ,timestamp: new Date(),email});
 
       try {
         const novoUsuario = await Message_agendamento.create(message);
@@ -639,31 +616,27 @@ const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por te
       //here use _phoneId._serialized with valid whatsapp_id 
 
 
-    } else { // aqui eu posso salvar em um arquivo e mandar para loja por exemplo . 
+    // } else { // aqui eu posso salvar em um arquivo e mandar para loja por exemplo . 
 
-      //Handle invalid number
-      console.log("Mensagem nao enviada - numero incorreto!! ");
+    //   //Handle invalid number
+    //   console.log("Mensagem nao enviada - numero incorreto!! ");
 
-    }
+    // }
   
-  } catch (error) {
-    console.log(error);
-
-  }
-
-  }
- 
-
+  } 
 
 
 setInterval(async () => {
   console.log("verificando se tem mensagem para enviar ")
   if (ativo === false){
-    console.log("verificando servdor zap ainda iniciando ou offline ")
+    console.log("Servidor zap Off ")
 
   return 
+
   }
   else {
+    console.log("Servidor zap ON ")
+
   // Calcula a data e hora 4 minutos no passado
   //const Schedule = new Date(Date.now() - 2 * 60 * 1000); // 4 minutos 
   const Schedule = new Date(Date.now() - 8 * 60 * 60 * 1000); // 8 horas 
@@ -674,19 +647,34 @@ setInterval(async () => {
   // Envia as mensagens agendadas
   messagesToSend.forEach(async (message) => {
 
-    const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/mopspray.png?alt=media&token=2488a3d9-c8b4-4c32-9946-343b50e31f88");
-    const arrayBuffer = await response.arrayBuffer();
+  //  const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/mopspray.png?alt=media&token=2488a3d9-c8b4-4c32-9946-343b50e31f88");
+   // const arrayBuffer = await response.arrayBuffer();
 
-    const buffer = Buffer.from(arrayBuffer);
+  //  const buffer = Buffer.from(arrayBuffer);
 
    /// const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
       
     //await client.sendMessage(message.serialize, media, { caption: message.mensagemComLink });
-    await client.sendMessage(message.serialize,message.mensagemComLink );
+ const  _phoneId = await client.getNumberId(message.serialize)
+
+
+const serialize = _phoneId._serialized;
+
+ 
+    if (serialize) {
+
+
+    await client.sendMessage(serialize,message.mensagemComLink );
 
     // await client.sendMessage(message.serialize, message.mensagemComLink);
     await Message_agendamento.deleteOne({ _id: message._id }); // Remove a mensagem do banco de dados
-  });
+  }
+  else {
+    console.log("mensagem não enviada , provavelmente numero esta incorreto ou não existe no zap")
+    return 
+  }
+  }  
+  );
 }},30 * 1000);
 
 function salvarmensagemoff(message,numero){
