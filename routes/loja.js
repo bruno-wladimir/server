@@ -637,12 +637,32 @@ setInterval(async () => {
   else {
     console.log("Servidor zap ON ")
 
-  // Calcula a data e hora 4 minutos no passado
-  //const Schedule = new Date(Date.now() - 2 * 60 * 1000); // 4 minutos 
-  const Schedule = new Date(Date.now() - 8 * 60 * 60 * 1000); // 8 horas 
+  // // Calcula a data e hora 4 minutos no passado
+  // //const Schedule = new Date(Date.now() - 2 * 60 * 1000); // 4 minutos 
+  // const Schedule = new Date(Date.now() - 8 * 60 * 60 * 1000); // 8 horas 
 
   // Usa $lte para encontrar mensagens agendadas que foram criadas há 4 minutos ou mais
-  const messagesToSend = await Message_agendamento.find({ timestamp: { $lte: Schedule } });
+  // const messagesToSend = await Message_agendamento.find({ timestamp: { $lte: Schedule } });
+
+
+  const agora = new Date();
+  const limiteInferior = new Date(agora);
+  limiteInferior.setHours(17, 0, 0, 0); // Define o limite inferior como 17h hoje
+  const limiteSuperior = new Date(agora);
+  limiteSuperior.setHours(19, 0, 0, 0); // Define o limite superior como 19h hoje
+  
+  // Verifica se a mensagem foi criada há mais de 24 horas
+  const limiteMensagem = new Date(agora);
+  limiteMensagem.setDate(limiteMensagem.getDate() - 1);
+  
+  const messagesToSend = await Message_agendamento.find({
+      timestamp: {
+          $lte: limiteMensagem, // Mensagem criada há mais de 24 horas
+          $gte: limiteInferior, // Mensagem agendada entre 17h e 19h
+          $lte: limiteSuperior
+      }
+  });
+
 
   // Envia as mensagens agendadas
   messagesToSend.forEach(async (message) => {
