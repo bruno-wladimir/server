@@ -655,7 +655,7 @@ setInterval(async () => {
    /// const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
       
     //await client.sendMessage(message.serialize, media, { caption: message.mensagemComLink });
- const  _phoneId = await client.getNumberId(message.serialize)
+ const  _phoneId = await client.getNumberId(message._numero)
 
 
 const serialize = _phoneId._serialized;
