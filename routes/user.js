@@ -75,7 +75,7 @@ router.post('/salvar_resposta', async (req, res) => {
                 // //console.log("enviando para "+ _phoneId._serialized)
                 const serialize = _phoneId._serialized;
                 res.status(201).json({ message: "Resposta Salva" });
-                client.sendMessage(serialize, "Você Esta Participando")
+                client.sendMessage(serialize, "🎉 Opinião recebida. 🙏")
 
             }
             else {

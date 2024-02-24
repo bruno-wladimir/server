@@ -619,7 +619,7 @@ console.log("numero preparado"+ serialize)
     //   Compartilhe sua opinião e nos ajude a melhorar
     // \nSua respostá é anônima. A loja não tem acesso aos seus dados.\n *Digite 1 para ativar o link abaixo*\n*(clique no link)*👇\n${link}` ;
  
-const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \nCompartilhe sua opinião e nos ajude a melhorar.\n\nSua resposta é anônima. A loja não tem acesso aos seus dados.\n\nPara acessar o link, responda com '1'.\n*(Clique no link abaixo)*👇\n${link}`;
+const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \nCompartilhe sua opinião e nos ajude a melhorar.\n\nSua resposta é anônima. A loja não tem acesso aos seus dados.\n\nPara habilitar o link baixo, responda com '1' essa mensagem .\n*(Clique no link abaixo)*👇\n${link}`;
 
       //await client.sendMessage( serialize,mensagemComLink);
 
