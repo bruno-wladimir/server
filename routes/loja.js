@@ -600,8 +600,8 @@ async function sendzapfunction(numero_recebido,link,nome_loja,email) {
    
 const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \nCompartilhe sua opinião e nos ajude a melhorar.\n\nSua resposta é anônima. A loja não tem acesso aos seus dados.\n\nPara habilitar o link abaixo, responda com '1' essa mensagem .\n*(Clique no link abaixo)*👇\n${link}`;
 const data = moment();
-      const message = new Message_agendamento({ _numero, mensagemComLink ,timestamp: data,email});
-console.log( "timestamp",data);
+      const message = new Message_agendamento({ _numero, mensagemComLink ,timestamp: new Date(),email});
+
       try {
         const novoUsuario = await Message_agendamento.create(message);
       } catch (error) {
