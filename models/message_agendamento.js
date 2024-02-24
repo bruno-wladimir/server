@@ -6,7 +6,7 @@ const data = moment();
 const Message_agendamento = mongoose.model('Message_agendamento',{
     _numero: String,
     mensagemComLink: String,
-    timestamp: {
+    data: {
         type: Date,
         default: () => moment().toDate()
       },
