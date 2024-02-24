@@ -615,10 +615,11 @@ console.log("numero preparado"+ serialize)
 
       // await client.sendMessage(serialize, media);
 
-      const mensagemComLink = `*🎉 Olá! 🎉*\n\n você recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \n
-      Compartilhe sua opinião e nos ajude a melhorar *(clique no link)* 👇
-      ${link}\n\nSua respostá é anônima. A loja não tem acesso aos seus dados.` ;
-
+    //   const mensagemComLink = `*🎉 Olá! 🎉*\n\n Você recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \n
+    //   Compartilhe sua opinião e nos ajude a melhorar
+    // \nSua respostá é anônima. A loja não tem acesso aos seus dados.\n *Digite 1 para ativar o link abaixo*\n*(clique no link)*👇\n${link}` ;
+ 
+const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \nCompartilhe sua opinião e nos ajude a melhorar.\n\nSua resposta é anônima. A loja não tem acesso aos seus dados.\n\nPara acessar o link, responda com '1'.\n*(Clique no link abaixo)*👇\n${link}`;
 
       //await client.sendMessage( serialize,mensagemComLink);
 
