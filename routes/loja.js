@@ -485,7 +485,7 @@ console.log("te cliente : "+ req.body.telefone_cliente)
 })
 
 
-async function gerar_link (email,telefone_cliente){
+async function gerar_link (email,telefone_cliente,vendedor){
   console.log(" tel ")
 
   const linkKey = uuidv4();
@@ -495,7 +495,8 @@ async function gerar_link (email,telefone_cliente){
     key: linkKey,
     used: false,
   tel_cliente: telefone_cliente,
-    loja:email
+    loja:email,
+    vendedor:vendedor
   }
 
   await Link_validator.create(links)
