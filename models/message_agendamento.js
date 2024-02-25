@@ -6,7 +6,7 @@ const _data = moment();
 const Message_agendamento = mongoose.model('Message_agendamento',{
     _numero: String,
     mensagemComLink: String,
-    timestamp: String,
+    timestamp: Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }),
     email:String
 
 })
