@@ -68,7 +68,7 @@ client.on('qr', (qr) => {
 
 client.on('ready', () => {
   console.log('Client is ready!');
-  console.log(process.env.USER );
+  console.log(process.env.HORA_ENVIO );
 
   
 
