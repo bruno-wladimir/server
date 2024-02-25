@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const bodyParser = require('body-parser');
 const qrcode = require('qrcode-terminal');
+const cron = require('node-cron');
+
 // const { Client, LocalAuth } = require('whatsapp-web.js');
 
 const Loja = require('../models/loja')
@@ -699,14 +701,82 @@ const serialize = _phoneId._serialized;
   );
 }},30 * 1000);
 
-function salvarmensagemoff(message,numero){
+// Agendar tarefa cron para enviar mensagens todos os dias às 18:00
+const horaEnvio = process.env.HORA_ENVIO || '0 18 * * *';
 
-  mensagensNaoEnviadas.push({ 
-    mensagem: message, 
-    numeroTelefone: numero
+// Agendar tarefa cron para enviar mensagens
+cron.schedule(horaEnvio, () => {
+  enviarMensagens();
+}, {
+  scheduled: true,
+  timezone: 'America/Sao_Paulo' // Defina o fuso horário desejado
 });
-console.log(mensagensNaoEnviadas)
 
+
+
+
+async function   enviarMensagens() {
+  console.log("verificando se tem mensagem para enviar ")
+  if (ativo === false){
+    console.log("Servidor zap Off ")
+
+  return 
+
+  }
+  else {
+    console.log("Servidor zap ON ")
+
+  const agora = moment()
+  const limiteInferior = moment();
+  limiteInferior.set({ hour: 17, minute: 0, second: 0, millisecond: 0 });
+  const limiteSuperior =moment();
+  limiteInferior.set({ hour: 19, minute: 0, second: 0, millisecond: 0 });
+
+  // Verifica se a mensagem foi criada há mais de 24 horas
+  const limiteMensagem = moment();
+  limiteMensagem.subtract(1, 'days');
+
+  const messagesToSend = await Message_agendamento.find({
+      timestamp: {
+          $lte: limiteMensagem, // Mensagem criada há mais de 24 horas
+          $gte: limiteInferior, // Mensagem agendada entre 17h e 19h
+          $lte: limiteSuperior
+      }
+  });
+
+
+  // Envia as mensagens agendadas
+  messagesToSend.forEach(async (message) => {
+
+  //  const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/mopspray.png?alt=media&token=2488a3d9-c8b4-4c32-9946-343b50e31f88");
+   // const arrayBuffer = await response.arrayBuffer();
+
+  //  const buffer = Buffer.from(arrayBuffer);
+
+   /// const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
+      
+    //await client.sendMessage(message.serialize, media, { caption: message.mensagemComLink });
+ const  _phoneId = await client.getNumberId(message._numero)
+
+
+const serialize = _phoneId._serialized;
+
+ 
+    if (serialize) {
+
+
+    await client.sendMessage(serialize,message.mensagemComLink );
+
+    // await client.sendMessage(message.serialize, message.mensagemComLink);
+    await Message_agendamento.deleteOne({ _id: message._id }); // Remove a mensagem do banco de dados
+  }
+  else {
+    console.log("mensagem não enviada , provavelmente numero esta incorreto ou não existe no zap")
+    return 
+  }
+  }  
+  );
+}
 }
 async function enviarmensagensretidas(){
 
