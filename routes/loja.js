@@ -630,76 +630,76 @@ const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por te
   } 
 
 
-setInterval(async () => {
-  console.log("verificando se tem mensagem para enviar ")
-  if (ativo === false){
-    console.log("Servidor zap Off ")
+// setInterval(async () => {
+//   console.log("verificando se tem mensagem para enviar ")
+//   if (ativo === false){
+//     console.log("Servidor zap Off ")
 
-  return 
+//   return 
 
-  }
-  else {
-    console.log("Servidor zap ON ")
+//   }
+//   else {
+//     console.log("Servidor zap ON ")
 
-  // // Calcula a data e hora 4 minutos no passado
-  // //const Schedule = new Date(Date.now() - 2 * 60 * 1000); // 4 minutos 
-  // const Schedule = new Date(Date.now() - 8 * 60 * 60 * 1000); // 8 horas 
+//   // // Calcula a data e hora 4 minutos no passado
+//   // //const Schedule = new Date(Date.now() - 2 * 60 * 1000); // 4 minutos 
+//   // const Schedule = new Date(Date.now() - 8 * 60 * 60 * 1000); // 8 horas 
 
-  // Usa $lte para encontrar mensagens agendadas que foram criadas há 4 minutos ou mais
-  // const messagesToSend = await Message_agendamento.find({ timestamp: { $lte: Schedule } });
-
-
-  const agora = moment()
-  const limiteInferior = moment();
-  limiteInferior.set({ hour: 17, minute: 0, second: 0, millisecond: 0 });
-  const limiteSuperior =moment();
-  limiteInferior.set({ hour: 19, minute: 0, second: 0, millisecond: 0 });
-
-  // Verifica se a mensagem foi criada há mais de 24 horas
-  const limiteMensagem = moment();
-  limiteMensagem.subtract(1, 'days');
-
-  const messagesToSend = await Message_agendamento.find({
-      timestamp: {
-          $lte: limiteMensagem, // Mensagem criada há mais de 24 horas
-          $gte: limiteInferior, // Mensagem agendada entre 17h e 19h
-          $lte: limiteSuperior
-      }
-  });
+//   // Usa $lte para encontrar mensagens agendadas que foram criadas há 4 minutos ou mais
+//   // const messagesToSend = await Message_agendamento.find({ timestamp: { $lte: Schedule } });
 
 
-  // Envia as mensagens agendadas
-  messagesToSend.forEach(async (message) => {
+//   const agora = moment()
+//   const limiteInferior = moment();
+//   limiteInferior.set({ hour: 17, minute: 0, second: 0, millisecond: 0 });
+//   const limiteSuperior =moment();
+//   limiteInferior.set({ hour: 19, minute: 0, second: 0, millisecond: 0 });
 
-  //  const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/mopspray.png?alt=media&token=2488a3d9-c8b4-4c32-9946-343b50e31f88");
-   // const arrayBuffer = await response.arrayBuffer();
+//   // Verifica se a mensagem foi criada há mais de 24 horas
+//   const limiteMensagem = moment();
+//   limiteMensagem.subtract(1, 'days');
 
-  //  const buffer = Buffer.from(arrayBuffer);
+//   const messagesToSend = await Message_agendamento.find({
+//       timestamp: {
+//           $lte: limiteMensagem, // Mensagem criada há mais de 24 horas
+//           $gte: limiteInferior, // Mensagem agendada entre 17h e 19h
+//           $lte: limiteSuperior
+//       }
+//   });
 
-   /// const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
+
+//   // Envia as mensagens agendadas
+//   messagesToSend.forEach(async (message) => {
+
+//   //  const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/mopspray.png?alt=media&token=2488a3d9-c8b4-4c32-9946-343b50e31f88");
+//    // const arrayBuffer = await response.arrayBuffer();
+
+//   //  const buffer = Buffer.from(arrayBuffer);
+
+//    /// const media = new MessageMedia('image/png', buffer.toString('base64'), 'imagem.png');
       
-    //await client.sendMessage(message.serialize, media, { caption: message.mensagemComLink });
- const  _phoneId = await client.getNumberId(message._numero)
+//     //await client.sendMessage(message.serialize, media, { caption: message.mensagemComLink });
+//  const  _phoneId = await client.getNumberId(message._numero)
 
 
-const serialize = _phoneId._serialized;
+// const serialize = _phoneId._serialized;
 
  
-    if (serialize) {
+//     if (serialize) {
 
 
-    await client.sendMessage(serialize,message.mensagemComLink );
+//     await client.sendMessage(serialize,message.mensagemComLink );
 
-    // await client.sendMessage(message.serialize, message.mensagemComLink);
-    await Message_agendamento.deleteOne({ _id: message._id }); // Remove a mensagem do banco de dados
-  }
-  else {
-    console.log("mensagem não enviada , provavelmente numero esta incorreto ou não existe no zap")
-    return 
-  }
-  }  
-  );
-}},30 * 1000);
+//     // await client.sendMessage(message.serialize, message.mensagemComLink);
+//     await Message_agendamento.deleteOne({ _id: message._id }); // Remove a mensagem do banco de dados
+//   }
+//   else {
+//     console.log("mensagem não enviada , provavelmente numero esta incorreto ou não existe no zap")
+//     return 
+//   }
+//   }  
+//   );
+// }},30 * 1000);
 
 // Agendar tarefa cron para enviar mensagens todos os dias às 18:00
 const horaEnvio = process.env.HORA_ENVIO || '0 18 * * *';
