@@ -6,7 +6,10 @@ const _data = moment();
 const Message_agendamento = mongoose.model('Message_agendamento',{
     _numero: String,
     mensagemComLink: String,
-    timestamp: Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }),
+    timestamp:{
+      type: Date,
+      default: () => moment().tz('America/Sao_Paulo').toDate() // Use moment-timezone para obter a data atual no fuso horário desejado
+    } ,
     email:String
 
 })
