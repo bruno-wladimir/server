@@ -188,24 +188,6 @@ const perguntasPosVenda = [
   }
 ];
 
-
-
-//INICIO ZAP 
-
-// const client = new Client({
-
-//   puppeteer: {
-//     headless: true,
-
-//   },
-//   authStrategy: new LocalAuth({
-//     clientId: "YOU_CLIENTE_ID"
-//   })
-// })
-
-//client.initialize(); // remover comentario para rodar 
-
-
 client.on('loading_screen', (percent, message) => {
   console.log('LOADING SCREEN', percent, message);
 
@@ -215,21 +197,12 @@ client.on('qr', (qr) => {
   console.log('QR RECEIVED', qr);
   qrcode.generate(qr, { small: true });
 
-  // const qrCodePath = './qr-code.png';
-  // qrcode.toFile(qrCodePath, qr, { small: true }, (err) => {
-  //   if (err) {
-  //     console.error('Erro ao salvar o QR code:', err);
-  //     return;
-  //   }
-  //   console.log('QR code salvo em:', qrCodePath);
-  // });
 
 });
 
 client.on('ready', () => {
   console.log('Client is ready!');
 
-  
 
   if (mensagensNaoEnviadas.length>0 ){
     enviarmensagensretidas();
@@ -497,7 +470,7 @@ console.log("te cliente : "+ req.body.telefone_cliente)
 
 
     //await Sorteio.create(dadosLoja)
-    const link  = await  gerar_link(email,telefone_cliente);
+    const link  = await  gerar_link(email,telefone_cliente,req.body.vendedor);
 
     await sendzapfunction(req.body.telefone_cliente,link,nome_loja,email); //aqui manda a mensagem para o clinte
     res.status(200).json({ message: "Cadastrado com sucesso na promoção " });
