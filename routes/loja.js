@@ -760,7 +760,7 @@ async function   enviarMensagens() {
 
   // Use $lte para encontrar mensagens agendadas que foram criadas há mais de um dia
 const messagesToSend = await Message_agendamento.find({
-  timestamp: { $lte: twoDaysAgo }
+  timestamp: { $lte: onedayago }
 });
 if(messagesToSend && messagesToSend.length > 0){
   messagesToSend.forEach(async (message) => {
