@@ -66,6 +66,9 @@ client.on('qr', (qr) => {
 
 client.on('ready', () => {
   console.log('Client is ready!');
+  console.log(process.env.HORA_ENVIO );
+
+  
 
   if (mensagensNaoEnviadas.length>0 ){
     enviarmensagensretidas();
