@@ -47,6 +47,8 @@ moment.tz.setDefault('America/Sao_Paulo');
 
 client.on('loading_screen', (percent, message) => {
   console.log('LOADING SCREEN', percent, message);
+  console.log(process.env.USER );
+
 });
 client.on('qr', (qr) => {
   // Generate and scan this code with your phone
