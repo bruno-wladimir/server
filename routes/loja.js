@@ -631,12 +631,12 @@ const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por te
     // }
   
   } 
-  setInterval(async () => {
+  // setInterval(async () => {
 
-    console.log(process.env.HORA_ENVIO );
-    enviarMensagens();
+  //   console.log(process.env.HORA_ENVIO );
+  //   enviarMensagens();
 
-  },30 * 1000);
+  // },30 * 1000);
 // setInterval(async () => {
 //   console.log("verificando se tem mensagem para enviar ")
 //   if (ativo === false){
