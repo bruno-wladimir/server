@@ -602,8 +602,7 @@ async function sendzapfunction(numero_recebido,link,nome_loja,email) {
 
 // const limiteMensagem = moment();
 // const _data = moment();
-const currentDate = new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' });
-console.log(currentDate)
+
 const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \nCompartilhe sua opinião e nos ajude a melhorar.\n\nSua resposta é anônima. A loja não tem acesso aos seus dados.\n\nPara habilitar o link abaixo, responda com '1' essa mensagem .\n*(Clique no link abaixo)*👇\n${link}`;
 
       const message = new Message_agendamento({ _numero, mensagemComLink ,email});
@@ -733,33 +732,11 @@ async function   enviarMensagens() {
   }
   else {
     console.log("Servidor zap ON ")
+    const dataLocal = moment(dataUTC).tz('America/Sao_Paulo');
 
-  // const agora = moment()
-  // const limiteInferior = moment();
-  // limiteInferior.set({ hour: 17, minute: 0, second: 0, millisecond: 0 });
-  // const limiteSuperior =moment();
-  // limiteInferior.set({ hour: 19, minute: 0, second: 0, millisecond: 0 });
-
-  // // Verifica se a mensagem foi criada há mais de 24 horas
-  // const limiteMensagem = moment();
-  // limiteMensagem.subtract(1, 'days');
-
-  // const messagesToSend = await Message_agendamento.find({
-  //     timestamp: {
-  //         $lte: limiteMensagem, // Mensagem criada há mais de 24 horas
-  //         $gte: limiteInferior, // Mensagem agendada entre 17h e 19h
-  //         $lte: limiteSuperior
-  //     }
-  // });
-  const currentDate = new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' });
-  currentDate.setHours(0, 0, 0, 0);
-// Calcula a data há dois dias atrás
-
-  const onedayago = new Date(currentDate);
-
-  onedayago.setDate(currentDate.getDate() - 1);
-  // Envia as mensagens agendadas
-console.log(onedayago)
+    dataLocal.startOf('day');
+    const ontem = moment(dataLocal).subtract(1, 'day').startOf('day');
+console.log(ontem)
   // Use $lte para encontrar mensagens agendadas que foram criadas há mais de um dia
 const messagesToSend = await Message_agendamento.find({
   timestamp: { $lte: onedayago }
