@@ -47,7 +47,6 @@ moment.tz.setDefault('America/Sao_Paulo');
 
 client.on('loading_screen', (percent, message) => {
   console.log('LOADING SCREEN', percent, message);
-  console.log(process.env.USER );
 
 });
 client.on('qr', (qr) => {
@@ -68,7 +67,6 @@ client.on('qr', (qr) => {
 
 client.on('ready', () => {
   console.log('Client is ready!');
-  console.log(process.env.HORA_ENVIO );
 
   
 
@@ -633,8 +631,11 @@ const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por te
     // }
   
   } 
+  setInterval(async () => {
 
+    console.log(process.env.HORA_ENVIO );
 
+  },30 * 1000);
 // setInterval(async () => {
 //   console.log("verificando se tem mensagem para enviar ")
 //   if (ativo === false){
