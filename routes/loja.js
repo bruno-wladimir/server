@@ -732,14 +732,14 @@ async function   enviarMensagens() {
   }
   else {
     console.log("Servidor zap ON ")
-    const dataLocal = moment(dataUTC).tz('America/Sao_Paulo');
+    const dataLocal = moment().tz('America/Sao_Paulo');
 
     dataLocal.startOf('day');
     const ontem = moment(dataLocal).subtract(1, 'day').startOf('day');
 console.log(ontem)
   // Use $lte para encontrar mensagens agendadas que foram criadas há mais de um dia
 const messagesToSend = await Message_agendamento.find({
-  timestamp: { $lte: onedayago }
+  timestamp: { $lte: ontem }
 });
 
   messagesToSend.forEach(async (message) => {
