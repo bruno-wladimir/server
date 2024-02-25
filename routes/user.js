@@ -26,7 +26,7 @@ client.on('authenticated', () => {
 
 router.post('/salvar_resposta', async (req, res) => {
 
-    const { respostas, link } = req.body
+    const { respostas, link ,vendedor} = req.body
 
     console.log(respostas);
 
@@ -43,6 +43,7 @@ router.post('/salvar_resposta', async (req, res) => {
                 respostas,
                 id_loja:link_.loja,
                 Data: Date.now(),
+                vendedor:vendedor
             }
 
 
