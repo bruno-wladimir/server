@@ -28,6 +28,167 @@ let mensagensNaoEnviadas = [];
 moment.tz.setDefault('America/Sao_Paulo');
 
 
+const perguntasPosVenda = [
+  {
+    categoria: "Loja Física",
+    perguntas: [
+      {
+        pergunta: "Qual é o seu nível de satisfação geral com a sua experiência de compra?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+      },
+      {
+        pergunta: "Foi fácil encontrar o que procurava em nossa loja?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      },
+      {
+        pergunta: "Como você avalia o ambiente geral da loja em termos de limpeza, organização?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+      },
+      {
+        pergunta: "A respeito do preço dos produtos o que você achou?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+      },
+      {
+        pergunta: "Você encontrou uma boa variedade de produtos para escolher na loja?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      },
+      {
+        pergunta: "O que achou do vendedor ?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+      },
+      {
+        pergunta: "Você recomendaria esta loja a um amigo ou familiar?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      }
+    ]
+  },
+  {
+    categoria: "Loja Online",
+    perguntas: [
+      {
+        pergunta: "Qual é o seu nível de satisfação geral com a sua experiência de compra?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+      },
+      {
+        pergunta: "Foi fácil comprar em nossa loja?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      },
+      {
+        pergunta: "A respeito do preço dos produtos o que você achou?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+      },
+      {
+        pergunta: "Você encontrou uma boa variedade de produtos para escolher na loja?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      },
+      {
+        pergunta: "Você recomendaria esta loja a um amigo ou familiar?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      }
+    ]
+  },
+  {
+    categoria: "Restaurante",
+    perguntas: [
+    {
+    pergunta: "Qual é o seu nível de satisfação geral com a sua experiência no restaurante?",
+    opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+    },
+    {
+    pergunta: "Foi fácil encontrar o que queria no menu?",
+    opcoes: ["Sim 😊", "Não 😕"]
+    },
+    {
+    pergunta: "Como você avalia o ambiente geral do restaurante em termos de limpeza e conforto?",
+    opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+    },
+    {
+    pergunta: "A respeito do preço dos pratos, o que você achou?",
+    opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+    },
+    {
+    pergunta: "Você encontrou uma boa variedade de pratos para escolher no menu?",
+    opcoes: ["Sim 😊", "Não 😕"]
+    },
+    {
+    pergunta: "O que achou do atendimento dos funcionários?",
+    opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+    },
+    {
+    pergunta: "Você recomendaria este restaurante a um amigo ou familiar?",
+    opcoes: ["Sim 😊", "Não 😕"]
+    }
+    ]
+    },
+    {
+      categoria: "Bares e Pubs",
+      perguntas: [
+        {
+          pergunta: "Qual é o seu nível de satisfação geral com a sua experiência no bar/pub?",
+          opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        },
+        {
+          pergunta: "Você achou a seleção de bebidas satisfatória?",
+          opcoes: ["Sim 😊", "Não 😕"]
+        },
+        {
+          pergunta: "Como você avalia o ambiente geral do bar/pub em termos de conforto e atmosfera?",
+          opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        },
+        {
+          pergunta: "A respeito dos preços das bebidas, o que você achou?",
+          opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        },
+        {
+          pergunta: "Você gostou da variedade de petiscos e alimentos disponíveis?",
+          opcoes: ["Sim 😊", "Não 😕"]
+        },
+        {
+          pergunta: "O que achou do atendimento dos funcionários?",
+          opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        },
+        {
+          pergunta: "Você recomendaria este bar/pub a um amigo ou familiar?",
+          opcoes: ["Sim 😊", "Não 😕"]
+        }
+      ]
+    },
+    {
+    categoria: "Salões de Beleza e Barbearias",
+    perguntas: [
+      {
+        pergunta: "Qual é o seu nível de satisfação geral com a sua experiência no salão de beleza/barbearia?",
+        pcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+      },
+      {
+        pergunta: "Você ficou satisfeito(a) com o serviço prestado pelo profissional?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      },
+      {
+        pergunta: "Como você avalia o ambiente geral do salão de beleza/barbearia em termos de limpeza e conforto?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+      },
+      {
+        pergunta: "A respeito dos preços dos serviços oferecidos, o que você achou?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+      },
+      {
+        pergunta: "Você ficou satisfeito(a) com o resultado final do serviço recebido?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      },
+      {
+        pergunta: "O que achou do atendimento dos funcionários?",
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+      },
+      {
+        pergunta: "Você recomendaria este salão de beleza/barbearia a um amigo ou familiar?",
+        opcoes: ["Sim 😊", "Não 😕"]
+      }
+    ]
+  }
+];
+
+
 
 //INICIO ZAP 
 
@@ -490,63 +651,6 @@ router.post('/salvar_perguntas', async (req, res) => {
  // amoticons aceito const opcoes = const opcoes = ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️", "Sim 😊", "Não 😕"];
 // caso adcione mais precisamos remover no codigo pois vai dar erro no relatorio , ele pega excelente + emoticon , entÃo não passa no switch case 
 
- const perguntasPosVenda = [
-  {
-    categoria: "Loja Física",
-    perguntas: [
-      {
-        pergunta: "Qual é o seu nível de satisfação geral com a sua experiência de compra?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
-      },
-      {
-        pergunta: "Foi fácil encontrar o que procurava em nossa loja?",
-        opcoes: ["Sim 😊", "Não 😕"]
-      },
-      {
-        pergunta: "Como você avalia o ambiente geral da loja em termos de limpeza, organização?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
-      },
-      {
-        pergunta: "A respeito do preço dos produtos o que você achou?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
-      },
-      {
-        pergunta: "Você encontrou uma boa variedade de produtos para escolher na loja?",
-        opcoes: ["Sim 😊", "Não 😕"]
-      },
-      {
-        pergunta: "Você recomendaria esta loja a um amigo ou familiar?",
-        opcoes: ["Sim 😊", "Não 😕"]
-      }
-    ]
-  },
-  {
-    categoria: "Loja Online",
-    perguntas: [
-      {
-        pergunta: "Qual é o seu nível de satisfação geral com a sua experiência de compra?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
-      },
-      {
-        pergunta: "Foi fácil comprar em nossa loja?",
-        opcoes: ["Sim 😊", "Não 😕"]
-      },
-      {
-        pergunta: "A respeito do preço dos produtos o que você achou?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
-      },
-      {
-        pergunta: "Você encontrou uma boa variedade de produtos para escolher na loja?",
-        opcoes: ["Sim 😊", "Não 😕"]
-      },
-      {
-        pergunta: "Você recomendaria esta loja a um amigo ou familiar?",
-        opcoes: ["Sim 😊", "Não 😕"]
-      }
-    ]
-  }
-];
-
 
 
   // const { nome_loja, telefone_loja, cidade, categoria, vendedores } = req.body
@@ -565,6 +669,29 @@ router.post('/salvar_perguntas', async (req, res) => {
 
 
 })
+
+router.get('/categorias', async (req, res) => {
+  // amoticons aceito const opcoes = const opcoes = ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️", "Sim 😊", "Não 😕"];
+ // caso adcione mais precisamos remover no codigo pois vai dar erro no relatorio , ele pega excelente + emoticon , entÃo não passa no switch case 
+ 
+ 
+ 
+   // const { nome_loja, telefone_loja, cidade, categoria, vendedores } = req.body
+ 
+   try {
+     const categorias= await Perguntas.find()
+ 
+ 
+     res.status(201).json({ data: categorias});
+ 
+ 
+ 
+   } catch (error) {
+     res.status(400).json({ error: error.message });
+   }
+ 
+ 
+ })
 
 function getMimeTypeFromExtension(extension) {
   switch (extension.toLowerCase()) {
