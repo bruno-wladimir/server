@@ -757,12 +757,12 @@ async function   enviarMensagens() {
 
   onedayago.setDate(currentDate.getDate() - 1);
   // Envia as mensagens agendadas
-
+console.log(onedayago)
   // Use $lte para encontrar mensagens agendadas que foram criadas há mais de um dia
 const messagesToSend = await Message_agendamento.find({
   timestamp: { $lte: onedayago }
 });
-if(messagesToSend && messagesToSend.length > 0){
+
   messagesToSend.forEach(async (message) => {
 
   //  const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/mopspray.png?alt=media&token=2488a3d9-c8b4-4c32-9946-343b50e31f88");
@@ -792,11 +792,9 @@ const serialize = _phoneId._serialized;
     return 
   }
   }  
-  )}else{
-    console.log("nenhuma mensagem para enviar")
-  };
+  )};
 }
-}
+
 async function enviarmensagensretidas(){
 
 if(mensagensNaoEnviadas.length >0){
