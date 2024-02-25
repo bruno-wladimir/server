@@ -602,10 +602,11 @@ async function sendzapfunction(numero_recebido,link,nome_loja,email) {
 
 // const limiteMensagem = moment();
 // const _data = moment();
+const currentDate = new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' });
 
 const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \nCompartilhe sua opinião e nos ajude a melhorar.\n\nSua resposta é anônima. A loja não tem acesso aos seus dados.\n\nPara habilitar o link abaixo, responda com '1' essa mensagem .\n*(Clique no link abaixo)*👇\n${link}`;
 
-      const message = new Message_agendamento({ _numero, mensagemComLink ,timestamp: new Date(),email});
+      const message = new Message_agendamento({ _numero, mensagemComLink ,timestamp: currentDate,email});
 
       try {
         const novoUsuario = await Message_agendamento.create(message);
@@ -750,7 +751,7 @@ async function   enviarMensagens() {
   //         $lte: limiteSuperior
   //     }
   // });
-  const currentDate = new Date();
+  const currentDate = new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' });
   currentDate.setHours(0, 0, 0, 0);
 // Calcula a data há dois dias atrás
 
