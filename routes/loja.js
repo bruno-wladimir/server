@@ -158,7 +158,7 @@ const perguntasPosVenda = [
     perguntas: [
       {
         pergunta: "Qual é o seu nível de satisfação geral com a sua experiência no salão de beleza/barbearia?",
-        pcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
       },
       {
         pergunta: "Você ficou satisfeito(a) com o serviço prestado pelo profissional?",
