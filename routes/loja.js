@@ -702,7 +702,7 @@ const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por te
 // }},30 * 1000);
 
 // Agendar tarefa cron para enviar mensagens todos os dias às 18:00
-const horaEnvio = process.env.HORA_ENVIO || '0 18 * * *';
+const horaEnvio = process.env.HORA_ENVIO || '0 0 18 * * *';
 
 // Agendar tarefa cron para enviar mensagens
 cron.schedule(horaEnvio, () => {
