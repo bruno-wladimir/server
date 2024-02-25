@@ -732,26 +732,37 @@ async function   enviarMensagens() {
   else {
     console.log("Servidor zap ON ")
 
-  const agora = moment()
-  const limiteInferior = moment();
-  limiteInferior.set({ hour: 17, minute: 0, second: 0, millisecond: 0 });
-  const limiteSuperior =moment();
-  limiteInferior.set({ hour: 19, minute: 0, second: 0, millisecond: 0 });
+  // const agora = moment()
+  // const limiteInferior = moment();
+  // limiteInferior.set({ hour: 17, minute: 0, second: 0, millisecond: 0 });
+  // const limiteSuperior =moment();
+  // limiteInferior.set({ hour: 19, minute: 0, second: 0, millisecond: 0 });
 
-  // Verifica se a mensagem foi criada há mais de 24 horas
-  const limiteMensagem = moment();
-  limiteMensagem.subtract(1, 'days');
+  // // Verifica se a mensagem foi criada há mais de 24 horas
+  // const limiteMensagem = moment();
+  // limiteMensagem.subtract(1, 'days');
 
-  const messagesToSend = await Message_agendamento.find({
-      timestamp: {
-          $lte: limiteMensagem, // Mensagem criada há mais de 24 horas
-          $gte: limiteInferior, // Mensagem agendada entre 17h e 19h
-          $lte: limiteSuperior
-      }
-  });
+  // const messagesToSend = await Message_agendamento.find({
+  //     timestamp: {
+  //         $lte: limiteMensagem, // Mensagem criada há mais de 24 horas
+  //         $gte: limiteInferior, // Mensagem agendada entre 17h e 19h
+  //         $lte: limiteSuperior
+  //     }
+  // });
+  const currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0);
+// Calcula a data há dois dias atrás
 
+  const onedayago = new Date(currentDate);
 
+  onedayago.setDate(currentDate.getDate() - 1);
   // Envia as mensagens agendadas
+
+  // Use $lte para encontrar mensagens agendadas que foram criadas há mais de um dia
+const messagesToSend = await Message_agendamento.find({
+  timestamp: { $lte: twoDaysAgo }
+});
+if(messagesToSend && messagesToSend.length > 0){
   messagesToSend.forEach(async (message) => {
 
   //  const response = await fetch("https://firebasestorage.googleapis.com/v0/b/pesquisa-ec906.appspot.com/o/mopspray.png?alt=media&token=2488a3d9-c8b4-4c32-9946-343b50e31f88");
@@ -781,7 +792,9 @@ const serialize = _phoneId._serialized;
     return 
   }
   }  
-  );
+  )}else{
+    console.log("nenhuma mensagem para enviar")
+  };
 }
 }
 async function enviarmensagensretidas(){
