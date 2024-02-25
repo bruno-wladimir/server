@@ -648,12 +648,10 @@ router.get('/getparticipantes', async (req, res) => {
 
 
 router.post('/salvar_perguntas', async (req, res) => {
- // amoticons aceito const opcoes = const opcoes = ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️", "Sim 😊", "Não 😕"];
+// amoticons aceito const opcoes = const opcoes = ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️", "Sim 😊", "Não 😕"];
 // caso adcione mais precisamos remover no codigo pois vai dar erro no relatorio , ele pega excelente + emoticon , entÃo não passa no switch case 
 
-
-
-  // const { nome_loja, telefone_loja, cidade, categoria, vendedores } = req.body
+// const { nome_loja, telefone_loja, cidade, categoria, vendedores } = req.body
 
   try {
     await Perguntas.create(perguntasPosVenda)
@@ -670,7 +668,7 @@ router.post('/salvar_perguntas', async (req, res) => {
 
 })
 
-router.get('/categorias', async (req, res) => {
+router.get('/get_categorias', async (req, res) => {
   // amoticons aceito const opcoes = const opcoes = ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️", "Sim 😊", "Não 😕"];
  // caso adcione mais precisamos remover no codigo pois vai dar erro no relatorio , ele pega excelente + emoticon , entÃo não passa no switch case 
  
