@@ -27,38 +27,38 @@ let mensagensNaoEnviadas = [];
 //qrcode.generate(qrd, { small: true });
 moment.tz.setDefault('America/Sao_Paulo');
 
-
+// ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
 const perguntasPosVenda = [
   {
     categoria: "Loja Física",
     perguntas: [
       {
         pergunta: "Qual é o seu nível de satisfação geral com a sua experiência de compra?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        opcoes: ["R1", "R2", "R3", "R4"],
       },
       {
         pergunta: "Foi fácil encontrar o que procurava em nossa loja?",
-        opcoes: ["Sim 😊", "Não 😕"]
+        opcoes: ["S", "N"]
       },
       {
         pergunta: "Como você avalia o ambiente geral da loja em termos de limpeza, organização?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        opcoes: ["R1", "R2", "R3", "R4"],
       },
       {
         pergunta: "A respeito do preço dos produtos o que você achou?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        opcoes: ["R1", "R2", "R3", "R4"],
       },
       {
         pergunta: "Você encontrou uma boa variedade de produtos para escolher na loja?",
-        opcoes: ["Sim 😊", "Não 😕"]
+        opcoes: ["S", "N"]
       },
       {
         pergunta: "O que achou do vendedor ?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        opcoes: ["R1", "R2", "R3", "R4"],
       },
       {
         pergunta: "Você recomendaria esta loja a um amigo ou familiar?",
-        opcoes: ["Sim 😊", "Não 😕"]
+        opcoes: ["S", "N"]
       }
     ]
   },
@@ -67,23 +67,23 @@ const perguntasPosVenda = [
     perguntas: [
       {
         pergunta: "Qual é o seu nível de satisfação geral com a sua experiência de compra?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        opcoes: ["R1", "R2", "R3", "R4"],
       },
       {
         pergunta: "Foi fácil comprar em nossa loja?",
-        opcoes: ["Sim 😊", "Não 😕"]
+        opcoes: ["S", "N"]
       },
       {
         pergunta: "A respeito do preço dos produtos o que você achou?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        opcoes: ["R1", "R2", "R3", "R4"],
       },
       {
         pergunta: "Você encontrou uma boa variedade de produtos para escolher na loja?",
-        opcoes: ["Sim 😊", "Não 😕"]
+        opcoes: ["S", "N"]
       },
       {
         pergunta: "Você recomendaria esta loja a um amigo ou familiar?",
-        opcoes: ["Sim 😊", "Não 😕"]
+        opcoes: ["S", "N"]
       }
     ]
   },
@@ -92,32 +92,32 @@ const perguntasPosVenda = [
     perguntas: [
     {
     pergunta: "Qual é o seu nível de satisfação geral com a sua experiência no restaurante?",
-    opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
-    },
+    opcoes: ["R1", "R2", "R3", "R4"],
+  },
     {
     pergunta: "Foi fácil encontrar o que queria no menu?",
-    opcoes: ["Sim 😊", "Não 😕"]
-    },
+    opcoes: ["S", "N"]
+  },
     {
     pergunta: "Como você avalia o ambiente geral do restaurante em termos de limpeza e conforto?",
-    opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
-    },
+    opcoes: ["R1", "R2", "R3", "R4"],
+  },
     {
     pergunta: "A respeito do preço dos pratos, o que você achou?",
-    opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
-    },
+    opcoes: ["R1", "R2", "R3", "R4"],
+  },
     {
     pergunta: "Você encontrou uma boa variedade de pratos para escolher no menu?",
-    opcoes: ["Sim 😊", "Não 😕"]
-    },
+    opcoes: ["S", "N"]
+  },
     {
     pergunta: "O que achou do atendimento dos funcionários?",
-    opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
-    },
+    opcoes: ["R1", "R2", "R3", "R4"],
+  },
     {
     pergunta: "Você recomendaria este restaurante a um amigo ou familiar?",
-    opcoes: ["Sim 😊", "Não 😕"]
-    }
+    opcoes: ["S", "N"]
+  }
     ]
     },
     {
@@ -125,31 +125,31 @@ const perguntasPosVenda = [
       perguntas: [
         {
           pergunta: "Qual é o seu nível de satisfação geral com a sua experiência no bar/pub?",
-          opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+          opcoes: ["R1", "R2", "R3", "R4"],
         },
         {
           pergunta: "Você achou a seleção de bebidas satisfatória?",
-          opcoes: ["Sim 😊", "Não 😕"]
+          opcoes: ["S", "N"]
         },
         {
           pergunta: "Como você avalia o ambiente geral do bar/pub em termos de conforto e atmosfera?",
-          opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+          opcoes: ["R1", "R2", "R3", "R4"],
         },
         {
           pergunta: "A respeito dos preços das bebidas, o que você achou?",
-          opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+          opcoes: ["R1", "R2", "R3", "R4"],
         },
         {
           pergunta: "Você gostou da variedade de petiscos e alimentos disponíveis?",
-          opcoes: ["Sim 😊", "Não 😕"]
+          opcoes: ["S", "N"]
         },
         {
           pergunta: "O que achou do atendimento dos funcionários?",
-          opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+          opcoes: ["R1", "R2", "R3", "R4"],
         },
         {
           pergunta: "Você recomendaria este bar/pub a um amigo ou familiar?",
-          opcoes: ["Sim 😊", "Não 😕"]
+          opcoes: ["S", "N"]
         }
       ]
     },
@@ -158,31 +158,31 @@ const perguntasPosVenda = [
     perguntas: [
       {
         pergunta: "Qual é o seu nível de satisfação geral com a sua experiência no salão de beleza/barbearia?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        opcoes: ["R1", "R2", "R3", "R4"],
       },
       {
         pergunta: "Você ficou satisfeito(a) com o serviço prestado pelo profissional?",
-        opcoes: ["Sim 😊", "Não 😕"]
+        opcoes: ["S", "N"]
       },
       {
         pergunta: "Como você avalia o ambiente geral do salão de beleza/barbearia em termos de limpeza e conforto?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        opcoes: ["R1", "R2", "R3", "R4"],
       },
       {
         pergunta: "A respeito dos preços dos serviços oferecidos, o que você achou?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        opcoes: ["R1", "R2", "R3", "R4"],
       },
       {
         pergunta: "Você ficou satisfeito(a) com o resultado final do serviço recebido?",
-        opcoes: ["Sim 😊", "Não 😕"]
+        opcoes: ["S", "N"]
       },
       {
         pergunta: "O que achou do atendimento dos funcionários?",
-        opcoes: ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
+        opcoes: ["R1", "R2", "R3", "R4"],
       },
       {
         pergunta: "Você recomendaria este salão de beleza/barbearia a um amigo ou familiar?",
-        opcoes: ["Sim 😊", "Não 😕"]
+        opcoes: ["R1", "R2", "R3", "R4"],
       }
     ]
   }
