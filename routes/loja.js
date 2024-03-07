@@ -29,39 +29,7 @@ moment.tz.setDefault('America/Sao_Paulo');
 
 // ["Excelente 😃", "Bom 🙂", "Regular 😐", "Ruim ☹️"]
 const perguntasPosVenda = [
-  {
-    categoria: "Loja Física",
-    perguntas: [
-      {
-        pergunta: "Qual é o seu nível de satisfação geral com a sua experiência de compra?",
-        opcoes: ["R1", "R2", "R3", "R4"],
-      },
-      {
-        pergunta: "Foi fácil encontrar o que procurava em nossa loja?",
-        opcoes: ["S", "N"]
-      },
-      {
-        pergunta: "Como você avalia o ambiente geral da loja em termos de limpeza, organização?",
-        opcoes: ["R1", "R2", "R3", "R4"],
-      },
-      {
-        pergunta: "A respeito do preço dos produtos o que você achou?",
-        opcoes: ["R1", "R2", "R3", "R4"],
-      },
-      {
-        pergunta: "Você encontrou uma boa variedade de produtos para escolher na loja?",
-        opcoes: ["S", "N"]
-      },
-      {
-        pergunta: "O que achou do vendedor ?",
-        opcoes: ["R1", "R2", "R3", "R4"],
-      },
-      {
-        pergunta: "Você recomendaria esta loja a um amigo ou familiar?",
-        opcoes: ["S", "N"]
-      }
-    ]
-  },
+
   {
     categoria: "Loja Online",
     perguntas: [
@@ -84,7 +52,11 @@ const perguntasPosVenda = [
       {
         pergunta: "Você recomendaria esta loja a um amigo ou familiar?",
         opcoes: ["S", "N"]
-      }
+      },
+       {
+        pergunta_aberta: "Você recomendaria esta loja a um amigo ou familiar?",
+        resposta_aberta: ""
+      },
     ]
   },
   {
@@ -117,7 +89,11 @@ const perguntasPosVenda = [
     {
     pergunta: "Você recomendaria este restaurante a um amigo ou familiar?",
     opcoes: ["S", "N"]
-  }
+  },
+  {
+        pergunta_aberta: "Você recomendaria esta loja a um amigo ou familiar?",
+        resposta_aberta: ""
+      },
     ]
     },
     {
@@ -150,7 +126,11 @@ const perguntasPosVenda = [
         {
           pergunta: "Você recomendaria este bar/pub a um amigo ou familiar?",
           opcoes: ["S", "N"]
-        }
+        },
+        {
+        pergunta_aberta: "Você recomendaria esta loja a um amigo ou familiar?",
+        resposta_aberta: ""
+      },
       ]
     },
     {
@@ -183,7 +163,11 @@ const perguntasPosVenda = [
       {
         pergunta: "Você recomendaria este salão de beleza/barbearia a um amigo ou familiar?",
         opcoes: ["R1", "R2", "R3", "R4"],
-      }
+      },
+      {
+        pergunta_aberta: "Você recomendaria esta loja a um amigo ou familiar?",
+        resposta_aberta: ""
+      },
     ]
   }
 ];
