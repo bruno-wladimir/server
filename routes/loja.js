@@ -54,7 +54,7 @@ const perguntasPosVenda = [
         opcoes: ["S", "N"]
       },
        {
-        pergunta_aberta: "Você recomendaria esta loja a um amigo ou familiar?",
+        pergunta_aberta: "Conte pra gente como podemos melhorar!",
         resposta_aberta: ""
       },
     ]
@@ -90,8 +90,8 @@ const perguntasPosVenda = [
     pergunta: "Você recomendaria este restaurante a um amigo ou familiar?",
     opcoes: ["S", "N"]
   },
-  {
-        pergunta_aberta: "Você recomendaria esta loja a um amigo ou familiar?",
+   {
+        pergunta_aberta: "Conte pra gente como podemos melhorar!",
         resposta_aberta: ""
       },
     ]
@@ -128,7 +128,7 @@ const perguntasPosVenda = [
           opcoes: ["S", "N"]
         },
         {
-        pergunta_aberta: "Você recomendaria esta loja a um amigo ou familiar?",
+        pergunta_aberta: "Conte pra gente como podemos melhorar!",
         resposta_aberta: ""
       },
       ]
@@ -162,8 +162,8 @@ const perguntasPosVenda = [
       },
       {
         pergunta: "Você recomendaria este salão de beleza/barbearia a um amigo ou familiar?",
-        opcoes: ["R1", "R2", "R3", "R4"],
-      },
+        opcoes: ["S", "N"]     
+       },
       {
         pergunta_aberta: "Você recomendaria esta loja a um amigo ou familiar?",
         resposta_aberta: ""
