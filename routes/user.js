@@ -1,6 +1,7 @@
 
 const router = require('express').Router();
 const mongoose = require('mongoose');
+const Sorteio = require('../models/sorteio');
 
 const Perguntas = require('../models/perguntas');
 const Respostas = require('../models/respostas');
@@ -50,6 +51,33 @@ router.post('/salvar_resposta', async (req, res) => {
             await Respostas.create(salvar_db)
             // const nova_loja = await loja.save();
              await disableLink(link)
+// inicia cadastro do cliente na promocao
+
+
+var novo_participante = {
+    nome: link_.nome_cliente,
+    tel: link_.tel_cliente,
+    email_loja: link_.loja,
+    vendedor: link_.vendedor
+ 
+  }
+
+
+             const condição = {
+                ativa: true,
+                cidade: "João Monlevade"
+                // Substitua com o valor desejado
+              };
+          
+              const resultado = await Sorteio.findOneAndUpdate({ $and: [condição] },
+                 { $push: { participantes: novo_participante } },{ new: true })
+          
+                 console.log(" DB BUSCAR SORTEIO "+ resultado)
+          
+              //console.log("resulr"+ resultado);
+
+
+
 
             if (ativo == true) {
 

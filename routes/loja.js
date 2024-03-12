@@ -438,23 +438,23 @@ console.log("te cliente : "+ req.body.telefone_cliente)
     const cidade = primeiroDocumento.cidade;
 
     const nome_loja = primeiroDocumento.nome_loja;
-    const condição = {
-      ativa: true,
-      cidade: cidade
-      // Substitua com o valor desejado
-    };
+    // const condição = {
+    //   ativa: true,
+    //   cidade: cidade
+    //   // Substitua com o valor desejado
+    // };
 
-    const resultado = await Sorteio.findOneAndUpdate({ $and: [condição] },
-       { $push: { participantes: novo_participante } },{ new: true })
+    // const resultado = await Sorteio.findOneAndUpdate({ $and: [condição] },
+    //    { $push: { participantes: novo_participante } },{ new: true })
 
-       console.log(" DB BUSCAR SORTEIO "+ resultado)
+    //    console.log(" DB BUSCAR SORTEIO "+ resultado)
 
-    //console.log("resulr"+ resultado);
+    // //console.log("resulr"+ resultado);
 
 
 
     //await Sorteio.create(dadosLoja)
-    const link  = await  gerar_link(email,telefone_cliente,req.body.vendedor);
+    const link  = await  gerar_link(email,telefone_cliente,req.body.vendedor,req.body.nome_cliente);
 
     await sendzapfunction(req.body.telefone_cliente,link,nome_loja,email); //aqui manda a mensagem para o clinte
     res.status(200).json({ message: "Cadastrado com sucesso na promoção " });
@@ -469,13 +469,14 @@ console.log("te cliente : "+ req.body.telefone_cliente)
 })
 
 
-async function gerar_link (email,telefone_cliente,vendedor){
+async function gerar_link (email,telefone_cliente,vendedor,nome_cliente){
   console.log(" tel ")
 
   const linkKey = uuidv4();
 
   // await LinkModel.create({ key: linkKey, used: false });
   const links = { 
+    nome_cliente:nome_cliente,
     key: linkKey,
     used: false,
   tel_cliente: telefone_cliente,
@@ -686,7 +687,7 @@ async function sendzapfunction(numero_recebido,link,nome_loja,email) {
 // const limiteMensagem = moment();
 // const _data = moment();
 
-const mensagemComLink = `*🎉 Olá! 🎉*\n\nVocê recebeu esta mensagem por ter comprado na ${nome_loja} 🎉 \nCompartilhe sua opinião e nos ajude a melhorar.\n\nSua resposta é anônima. A loja não tem acesso aos seus dados.\n\nPara habilitar o link abaixo, responda com '1' essa mensagem .\n*(Clique no link abaixo)*👇\n${link}`;
+const mensagemComLink = ` ${nome_loja} gostaria de saber sua opinião 🤩 .\n\nSua resposta é anônima, a loja não tem acesso aos seus dados.\n\nPara habilitar o link abaixo, responda com '1' essa mensagem .\n*(Clique no link abaixo)*👇\n${link}`;
 
       const message = new Message_agendamento({ _numero, mensagemComLink ,email});
 

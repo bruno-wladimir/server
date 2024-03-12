@@ -6,8 +6,7 @@ const Perguntas = mongoose.model('Perguntas',{
     perguntas: [{
         pergunta:String,
         opcoes: Array,
-        pergunta_aberta:String ,
-        resposta_aberta: String,
+      
     }]
    
 })

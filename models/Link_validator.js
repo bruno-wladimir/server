@@ -2,6 +2,7 @@ const  mongoose = require('mongoose');
 
 
 const Link_validator = mongoose.model('Link_validator',{
+    nome_cliente: String,
     key: String,
     used: Boolean,
     loja: String,
